@@ -1,3 +1,57 @@
 @import "tailwindcss/preflight" layer(base);
 @import "tailwindcss/utilities" layer(utilities);
 @import "tailwindcss/theme" layer(theme);
+
+@layer base {
+  :root {
+    /* Backgrounds — warm, not cold/pure black */
+    --bg-primary: #0c0c0e;
+    --bg-secondary: #141416;
+    --bg-tertiary: #1c1c20;
+    --bg-hover: #242428;
+
+    /* Text — warm off-whites and grays */
+    --text-primary: #ececee;
+    --text-secondary: #94949c;
+    --text-tertiary: #56565e;
+
+    /* Accent — warm coral-orange */
+    --accent: #e8734a;
+    --accent-light: #f09070;
+    --accent-subtle: rgba(232, 115, 74, 0.10);
+    --accent-glow: rgba(232, 115, 74, 0.08);
+
+    /* Borders — softer */
+    --border-subtle: rgba(255, 255, 255, 0.06);
+    --border-hover: rgba(255, 255, 255, 0.12);
+
+    /* Hero background */
+    --gradient-hero: radial-gradient(ellipse at 30% 50%, rgba(232, 115, 74, 0.06) 0%, transparent 60%);
+
+    /* Font families */
+    --font-heading: 'Outfit', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  html {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--bg-primary);
+  }
+}
