@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: '/owen-portfolio',
+  basePath: '',
 }
 
 export default nextConfig;
