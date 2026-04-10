@@ -2,9 +2,9 @@ export const siteConfig = {
   name: "Owen Dupree",
   title: "Frontend Engineer",
   location: "Sanford, Florida",
-  email: "owen@example.com",
-  github: "https://github.com",
-  linkedin: "https://linkedin.com",
+  email: "odupree1988@gmail.com",
+  github: "https://github.com/odupree1988",
+  linkedin: "https://www.linkedin.com/in/owen-dupree-163b63113",
 
   heroPills: [
     "e-commerce",
