@@ -5,6 +5,7 @@
 
 .home-cta {
   @apply px-6 py-24;
+  background: var(--bg-secondary);
 }
 
 .home-cta__inner {

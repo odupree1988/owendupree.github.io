@@ -38,47 +38,8 @@ export function Navbar() {
   }, [pathname]);
 
   return (
-    <nav className={cls(styles.navbar, scrolled && styles["navbar--scrolled"])}>
-      <Link href="/" className={styles.navbar__brand}>
-        <span className={styles.navbar__dot} />
-        owen dupree
-      </Link>
-
-      {/* Desktop */}
-      <div className={styles.navbar__links}>
-        {NAV_LINKS.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={cls(
-              styles.navbar__link,
-              pathname === link.href && styles["navbar__link--active"]
-            )}
-          >
-            {link.label}
-          </Link>
-        ))}
-        <Link href="/contact" className={styles.navbar__pill}>
-          Let&apos;s talk
-        </Link>
-        <span className={styles.navbar__divider} />
-        <ThemeToggle />
-      </div>
-
-      {/* Mobile toggle */}
-      <button
-        className={styles.navbar__toggle}
-        onClick={() => setMenuOpen(!menuOpen)}
-        aria-label="Toggle menu"
-      >
-        <div className={styles["navbar__toggle-bars"]}>
-          <span className={cls(styles["navbar__toggle-bar"], menuOpen && styles["navbar__toggle-bar--top-open"])} />
-          <span className={cls(styles["navbar__toggle-bar"], menuOpen && styles["navbar__toggle-bar--mid-open"])} />
-          <span className={cls(styles["navbar__toggle-bar"], menuOpen && styles["navbar__toggle-bar--bot-open"])} />
-        </div>
-      </button>
-
-      {/* Mobile overlay */}
+    <>
+      {/* Mobile overlay — outside nav to avoid backdrop-filter containing block */}
       <div className={cls(styles.navbar__overlay, !menuOpen && styles["navbar__overlay--closed"])}>
         {MOBILE_NAV_LINKS.map((link) => (
           <Link
@@ -93,6 +54,47 @@ export function Navbar() {
           </Link>
         ))}
       </div>
-    </nav>
+
+      <nav className={cls(styles.navbar, scrolled && styles["navbar--scrolled"])}>
+        <Link href="/" className={styles.navbar__brand}>
+          <span className={styles.navbar__dot} />
+          owen dupree
+        </Link>
+
+        {/* Desktop */}
+        <div className={styles.navbar__links}>
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={cls(
+                styles.navbar__link,
+                pathname === link.href && styles["navbar__link--active"]
+              )}
+            >
+              {link.label}
+            </Link>
+          ))}
+          <Link href="/contact" className={styles.navbar__pill}>
+            Let&apos;s talk
+          </Link>
+          <span className={styles.navbar__divider} />
+          <ThemeToggle />
+        </div>
+
+        {/* Mobile toggle */}
+        <button
+          className={styles.navbar__toggle}
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+        >
+          <div className={styles["navbar__toggle-bars"]}>
+            <span className={cls(styles["navbar__toggle-bar"], menuOpen && styles["navbar__toggle-bar--top-open"])} />
+            <span className={cls(styles["navbar__toggle-bar"], menuOpen && styles["navbar__toggle-bar--mid-open"])} />
+            <span className={cls(styles["navbar__toggle-bar"], menuOpen && styles["navbar__toggle-bar--bot-open"])} />
+          </div>
+        </button>
+      </nav>
+    </>
   );
 }

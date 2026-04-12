@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Outfit, DM_Sans, Space_Grotesk, DM_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { ThemeToggleMobile } from "@/components/ui/ThemeToggleMobile";
 import { siteConfig } from "@/data/siteConfig";
 import "./globals.css";
 
@@ -70,6 +71,7 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <ThemeToggleMobile />
       </body>
     </html>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import styles from "./ProjectCard.module.css";
 
 export interface FlipProject {
@@ -9,6 +10,7 @@ export interface FlipProject {
   tech: string[];
   url: string;
   gradient: [string, string];
+  image?: string;
 }
 
 interface ProjectCardProps {
@@ -31,10 +33,22 @@ export function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
         <div
           className={styles.card__front}
           style={{
-            background: `linear-gradient(135deg, ${project.gradient[0]}, ${project.gradient[1]})`,
+            background: project.image
+              ? undefined
+              : `linear-gradient(135deg, ${project.gradient[0]}, ${project.gradient[1]})`,
           }}
         >
-          <div className={styles["card__front-overlay"]} />
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={project.name}
+              fill
+              className={styles["card__front-image"]}
+              sizes="(min-width: 768px) 33vw, 100vw"
+            />
+          ) : (
+            <div className={styles["card__front-overlay"]} />
+          )}
           <div className={styles["card__front-content"]}>
             <h3 className={styles["card__front-name"]}>{project.name}</h3>
             <p className={styles["card__front-headline"]}>{project.headline}</p>

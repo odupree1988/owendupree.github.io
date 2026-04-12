@@ -4,7 +4,8 @@
    ═══════════════════════════════════════ */
 
 .navbar {
-  @apply fixed top-0 left-0 right-0 z-50 flex items-center justify-between;
+  @apply fixed top-0 left-0 right-0 flex items-center justify-between;
+  z-index: 60;
   padding: 28px 48px;
   background: transparent;
   border-bottom: 1px solid transparent;
@@ -89,7 +90,8 @@
 /* ── Mobile Toggle ── */
 
 .navbar__toggle {
-  @apply relative z-50 flex items-center justify-center w-10 h-10;
+  @apply relative flex items-center justify-center w-10 h-10;
+  z-index: 60;
 }
 
 .navbar__toggle-bars {
@@ -117,7 +119,8 @@
 /* ── Mobile Overlay ── */
 
 .navbar__overlay {
-  @apply fixed inset-0 z-40 flex flex-col items-center justify-center transition-all duration-500;
+  @apply fixed inset-0 flex flex-col items-center justify-center transition-all duration-500;
+  z-index: 55;
   background: var(--bg-primary);
 }
 

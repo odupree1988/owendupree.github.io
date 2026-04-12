@@ -1,0 +1,118 @@
+@reference "../../app/globals.css";
+/* ═══════════════════════════════════════
+   Skills Block — marquee tech stack
+   ═══════════════════════════════════════ */
+
+.skills {
+  background: var(--bg-secondary);
+  padding: 100px 0;
+  overflow: hidden;
+}
+
+/* ── Marquee rows ── */
+
+.skills__rows {
+  @apply flex flex-col gap-4;
+}
+
+.skills__marquee {
+  @apply relative overflow-hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 3%,
+    black 97%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 3%,
+    black 97%,
+    transparent 100%
+  );
+}
+
+.skills__marquee-track {
+  @apply flex gap-4;
+  width: max-content;
+  animation: marquee-scroll 35s linear infinite;
+}
+
+.skills__marquee-track--reverse {
+  animation-direction: reverse;
+}
+
+@keyframes marquee-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause on hover */
+.skills__marquee:hover .skills__marquee-track {
+  animation-play-state: paused;
+}
+
+/* ── Skill item ── */
+
+.skills__item {
+  @apply flex items-center gap-3 shrink-0;
+  padding: 14px 24px;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-primary);
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.skills__item:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+
+.skills__item-img {
+  @apply shrink-0 rounded-md object-contain;
+  width: 32px;
+  height: 32px;
+}
+
+/* Placeholder for missing icons */
+.skills__item-icon {
+  @apply shrink-0 rounded-lg;
+  width: 32px;
+  height: 32px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+}
+
+.skills__item-name {
+  @apply font-medium whitespace-nowrap;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.3px;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 768px) {
+  .skills {
+    padding: 72px 0;
+  }
+
+  .skills__item {
+    padding: 12px 18px;
+  }
+
+  .skills__item-icon {
+    width: 28px;
+    height: 28px;
+  }
+
+  .skills__item-name {
+    font-size: 12px;
+  }
+}

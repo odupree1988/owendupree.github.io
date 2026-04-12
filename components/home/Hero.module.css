@@ -604,6 +604,26 @@
   letter-spacing: 3px;
 }
 
+.hero__label-sep {
+  color: var(--text-tertiary);
+  opacity: 0.3;
+  font-size: 11px;
+}
+
+.hero__label-location {
+  @apply flex items-center gap-1.5;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+
+.hero__label-location svg {
+  width: 12px;
+  height: 12px;
+  stroke: var(--text-tertiary);
+}
+
 /* ── Name ── */
 
 .hero__name {
@@ -658,54 +678,63 @@
   @apply flex items-center gap-6;
 }
 
-.hero__cta-button {
-  @apply flex items-center justify-center w-12 h-12 rounded-full cursor-pointer shrink-0 border border-(--accent) bg-transparent;
-  transition: background 0.3s, border-color 0.3s;
-}
-
-.hero__cta-button:hover {
-  @apply bg-(--accent);
-}
-
-.hero__cta-button svg {
-  @apply w-4 h-4 fill-none stroke-(--accent);
-  transition: stroke 0.3s;
-}
-
-.hero__cta-button:hover svg {
-  stroke: var(--bg-primary);
-}
-
-.hero__cta-label {
-  @apply no-underline whitespace-nowrap text-(--accent);
-  font-family: var(--font-mono);
-  font-size: 13px;
-  letter-spacing: 0.5px;
-}
-
 .hero__actions-divider {
   @apply h-8 w-px;
   background: var(--border-hover);
 }
 
-/* ── Location ── */
-
-.hero__location {
-  @apply flex flex-col gap-1;
+.hero__cta-group {
+  @apply flex items-center gap-3 no-underline;
 }
 
-.hero__location-label {
-  @apply font-medium tracking-widest;
-  color: var(--text-tertiary);
+.hero__cta-button {
+  @apply flex items-center justify-center w-9 h-9 rounded-full shrink-0 border border-(--accent) bg-transparent;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.hero__cta-button svg {
+  @apply w-3 h-3 fill-none stroke-(--accent);
+  transition: stroke 0.3s;
+}
+
+.hero__cta-group:hover .hero__cta-button {
+  @apply bg-(--accent);
+}
+
+.hero__cta-group:hover .hero__cta-button svg {
+  stroke: var(--bg-primary);
+}
+
+.hero__cta-label {
+  @apply whitespace-nowrap text-(--accent);
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 13px;
+  letter-spacing: 0.5px;
 }
 
-.hero__location-value {
+.hero__cta-secondary {
+  @apply flex items-center gap-2 no-underline whitespace-nowrap;
   color: var(--text-secondary);
   font-family: var(--font-mono);
   font-size: 13px;
+  letter-spacing: 0.5px;
+  transition: color 0.3s;
 }
+
+.hero__cta-secondary svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s;
+}
+
+.hero__cta-secondary:hover {
+  color: var(--text-primary);
+}
+
+.hero__cta-secondary:hover svg {
+  transform: translateX(3px);
+}
+
 
 /* ── Animation ── */
 

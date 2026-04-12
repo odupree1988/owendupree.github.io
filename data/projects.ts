@@ -6,16 +6,18 @@ export interface Project {
   gradient: string;
   tech: string[];
   highlight?: string;
+  image?: string;
 }
 
 export const projects: Project[] = [
   {
-    title: "Kao North America",
+    title: "Kao Brands",
     slug: "kao",
     description:
       "Multi-brand headless commerce platform for 6 consumer brands across the U.S. and Canada. Shared cart, CMS-driven content, and scalable brand-specific storefronts.",
     link: "https://mykaoshop.com/",
     gradient: "from-[#1a1a2e] to-[#0f3460]",
+    image: "/mykaoshop.com_.png",
     tech: ["Hydrogen", "Contentful", "GraphQL", "Shopify"],
     highlight: "6 brands, 1 shared cart",
   },

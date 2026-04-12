@@ -183,13 +183,21 @@ export function Hero() {
 
       {/* Content */}
       <div className={styles.hero__content}>
-        {/* Label */}
+        {/* Label + Location */}
         <div
           className={cls(styles.hero__label, styles["hero__animate-in"])}
           style={{ transitionDelay: "0.2s" }}
         >
           <div className={styles["hero__label-line"]} />
           <span className={styles["hero__label-text"]}>FRONTEND ENGINEER</span>
+          <span className={styles["hero__label-sep"]}>—</span>
+          <span className={styles["hero__label-location"]}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            Sanford, FL
+          </span>
         </div>
 
         {/* Name */}
@@ -224,23 +232,28 @@ export function Hero() {
 
           <div className={styles.hero__actions}>
             <div className={styles["hero__actions-inner"]}>
-              <Link href="/work" className={styles["hero__cta-button"]}>
-                <svg
-                  viewBox="0 0 24 24"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M7 17L17 7" />
-                  <path d="M7 7h10v10" />
+              <Link href="/work" className={styles["hero__cta-group"]}>
+                <span className={styles["hero__cta-button"]}>
+                  <svg
+                    viewBox="0 0 24 24"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M7 17L17 7" />
+                    <path d="M7 7h10v10" />
+                  </svg>
+                </span>
+                <span className={styles["hero__cta-label"]}>View work</span>
+              </Link>
+              <div className={styles["hero__actions-divider"]} />
+              <Link href="/contact" className={styles["hero__cta-secondary"]}>
+                <span>Contact me</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M5 12h14" />
+                  <path d="M12 5l7 7-7 7" />
                 </svg>
               </Link>
-              <Link href="/work" className={styles["hero__cta-label"]}>View work</Link>
-              <div className={styles["hero__actions-divider"]} />
-              <div className={styles.hero__location}>
-                <span className={styles["hero__location-label"]}>BASED IN</span>
-                <span className={styles["hero__location-value"]}>Florida, US</span>
-              </div>
             </div>
           </div>
         </div>

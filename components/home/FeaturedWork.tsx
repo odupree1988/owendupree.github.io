@@ -7,13 +7,14 @@ import cardStyles from "@/components/work/ProjectCard.module.css";
 
 const PROJECTS: FlipProject[] = [
   {
-    name: "Kao North\nAmerica",
+    name: "Kao Brands",
     description:
       "Multi-brand headless commerce platform for 6 consumer brands across the U.S. and Canada. Shared cart, CMS-driven content, and scalable brand-specific storefronts.",
     headline: "6 brands, 1 shared cart",
     tech: ["Hydrogen", "React", "Contentful", "GraphQL"],
     url: "https://mykaoshop.com/",
     gradient: ["#1a3a2a", "#0d1f17"],
+    image: "/mykaoshop.com_.png",
   },
   {
     name: "Belnick",

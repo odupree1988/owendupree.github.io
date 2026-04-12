@@ -43,6 +43,10 @@
   @apply flex flex-col justify-end p-7;
 }
 
+.card__front-image {
+  @apply object-cover object-top;
+}
+
 .card__front-overlay {
   @apply absolute inset-0 pointer-events-none;
   background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.6) 100%);

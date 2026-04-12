@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import type { Project } from "@/data/projects";
 import styles from "./WorkCard.module.css";
@@ -13,11 +14,21 @@ export function WorkCard({ project, index }: WorkCardProps) {
   const inner = (
     <div className={styles["work-card"]}>
       <div className={styles["work-card__visual"]}>
-        <div
-          className={`${styles["work-card__gradient"]} bg-gradient-to-br ${project.gradient}`}
-        >
-          <span className={styles["work-card__watermark"]}>{project.title}</span>
-        </div>
+        {project.image ? (
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className={styles["work-card__image"]}
+            sizes="(min-width: 768px) 55vw, 100vw"
+          />
+        ) : (
+          <div
+            className={`${styles["work-card__gradient"]} bg-gradient-to-br ${project.gradient}`}
+          >
+            <span className={styles["work-card__watermark"]}>{project.title}</span>
+          </div>
+        )}
       </div>
 
       <div className={styles["work-card__body"]}>

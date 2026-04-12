@@ -23,6 +23,14 @@
   @apply scale-[1.02];
 }
 
+.work-card__image {
+  @apply object-cover object-top transition-transform duration-500;
+}
+
+.work-card:hover .work-card__image {
+  @apply scale-[1.02];
+}
+
 .work-card__watermark {
   @apply select-none text-5xl font-bold;
   color: var(--border-subtle);
@@ -63,7 +71,7 @@
 
   .work-card__visual {
     @apply w-[55%];
-    aspect-ratio: auto;
+    aspect-ratio: 16 / 10;
   }
 
   .work-card__watermark {
