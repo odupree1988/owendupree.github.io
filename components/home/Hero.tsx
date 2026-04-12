@@ -58,20 +58,6 @@ export function Hero() {
 
   return (
     <section ref={sectionRef} className={styles.hero}>
-      {/* Nav */}
-      <nav className={styles.hero__nav}>
-        <Link href="/" className={styles["hero__nav-brand"]}>
-          <span className={styles["hero__nav-dot"]} />
-          owen dupree
-        </Link>
-        <div className={styles["hero__nav-links"]}>
-          <Link href="/work" className={styles["hero__nav-link"]}>Work</Link>
-          <Link href="/about" className={styles["hero__nav-link"]}>About</Link>
-          <Link href="/contact" className={styles["hero__nav-link"]}>Contact</Link>
-          <Link href="/contact" className={styles["hero__nav-pill"]}>Let&apos;s talk</Link>
-        </div>
-      </nav>
-
       {/* Scroll indicator */}
       <div className={styles.hero__scroll}>
         <span className={styles["hero__scroll-text"]}>SCROLL</span>

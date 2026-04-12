@@ -4,21 +4,41 @@
    ═══════════════════════════════════════ */
 
 .featured-work {
-  @apply px-6 py-20 bg-(--bg-secondary);
+  background: var(--bg-primary);
+  padding: 120px 48px;
 }
 
-.featured-work__inner {
-  @apply mx-auto max-w-5xl;
+.featured-work__header {
+  @apply text-center uppercase text-(--accent);
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 3px;
 }
 
-.featured-work__list {
-  @apply flex flex-col gap-8;
+.featured-work__grid {
+  @apply mx-auto mt-12;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1200px;
 }
 
-.featured-work__cta {
-  @apply mt-12 text-center;
+@media (max-width: 1024px) {
+  .featured-work {
+    @apply px-6;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+
+  .featured-work__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.featured-work__link {
-  @apply text-sm font-medium no-underline transition-colors text-(--accent) hover:underline;
+@media (max-width: 767px) {
+  .featured-work__grid {
+    @apply mx-auto;
+    grid-template-columns: 1fr;
+    max-width: 440px;
+  }
 }

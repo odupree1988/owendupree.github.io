@@ -4,25 +4,39 @@
    ═══════════════════════════════════════ */
 
 .navbar {
-  @apply fixed top-0 z-50 w-full bg-transparent transition-colors duration-300;
+  @apply fixed top-0 left-0 right-0 z-50 flex items-center justify-between;
+  padding: 28px 48px;
+  background: transparent;
+  transition: background 0.3s, border-color 0.3s;
 }
 
 .navbar--scrolled {
-  @apply backdrop-blur-lg border-b border-(--border-subtle);
-  background: rgba(6, 6, 6, 0.8);
+  @apply backdrop-blur-lg;
+  background: rgba(6, 6, 6, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.navbar__inner {
-  @apply relative z-50 mx-auto flex items-center justify-between max-w-6xl px-6 py-4;
-}
+/* ── Brand ── */
 
 .navbar__brand {
-  @apply no-underline transition-colors text-sm font-semibold text-(--text-primary);
-  font-family: var(--font-heading);
+  @apply flex items-center gap-2.5 no-underline transition-colors text-white/50;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.5px;
 }
 
 .navbar__brand:hover {
-  @apply text-(--accent);
+  @apply text-white/80;
+}
+
+.navbar__dot {
+  @apply w-1.5 h-1.5 rounded-full bg-(--accent);
+  animation: navbar-pulse 3s ease-in-out infinite;
+}
+
+@keyframes navbar-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }
 
 /* ── Desktop Links ── */
@@ -32,21 +46,34 @@
 }
 
 .navbar__link {
-  @apply no-underline transition-colors text-sm font-medium text-(--text-secondary);
+  @apply no-underline transition-colors text-xs text-white/35;
+  font-family: var(--font-mono);
+  letter-spacing: 0.5px;
 }
 
 .navbar__link:hover {
-  @apply text-(--text-primary);
+  @apply text-white/80;
 }
 
 .navbar__link--active {
-  @apply text-(--accent);
+  @apply text-white/70;
+}
+
+.navbar__pill {
+  @apply no-underline rounded-3xl bg-transparent text-xs text-white/45 border border-white/15 py-2 px-5;
+  font-family: var(--font-mono);
+  letter-spacing: 0.5px;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+.navbar__pill:hover {
+  @apply border-white/40 text-white/80;
 }
 
 /* ── Mobile Toggle ── */
 
 .navbar__toggle {
-  @apply relative flex items-center justify-center w-10 h-10;
+  @apply relative z-50 flex items-center justify-center w-10 h-10;
 }
 
 .navbar__toggle-bars {
@@ -54,12 +81,13 @@
 }
 
 .navbar__toggle-bar {
-  @apply w-full rounded transition-all duration-300 bg-(--text-primary);
+  @apply w-full rounded transition-all duration-300;
   height: 2px;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .navbar__toggle-bar--top-open {
-  transform: translateY(0.5rem) rotate(45deg);
+  transform: translateY(9px) rotate(45deg);
 }
 
 .navbar__toggle-bar--mid-open {
@@ -67,13 +95,14 @@
 }
 
 .navbar__toggle-bar--bot-open {
-  transform: translateY(-0.5rem) rotate(-45deg);
+  transform: translateY(-9px) rotate(-45deg);
 }
 
 /* ── Mobile Overlay ── */
 
 .navbar__overlay {
-  @apply fixed inset-0 z-40 flex flex-col items-center justify-center bg-(--bg-primary) transition-all duration-500;
+  @apply fixed inset-0 z-40 flex flex-col items-center justify-center transition-all duration-500;
+  background: #060606;
 }
 
 .navbar__overlay--closed {
@@ -81,8 +110,8 @@
 }
 
 .navbar__overlay-link {
-  @apply no-underline transition-colors py-4 text-3xl font-semibold text-(--text-primary);
-  font-family: var(--font-heading);
+  @apply no-underline transition-colors py-4 text-3xl font-bold text-white/80;
+  font-family: var(--font-display);
 }
 
 .navbar__overlay-link:hover {
@@ -106,5 +135,11 @@
 
   .navbar__overlay {
     @apply hidden;
+  }
+}
+
+@media (max-width: 767px) {
+  .navbar {
+    @apply px-6 py-5;
   }
 }

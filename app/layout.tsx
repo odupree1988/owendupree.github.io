@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, DM_Sans, Syne, DM_Mono } from "next/font/google";
+import { Outfit, DM_Sans, Space_Grotesk, DM_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { siteConfig } from "@/data/siteConfig";
@@ -19,9 +19,9 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-const syne = Syne({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "700", "800"],
+  weight: ["400", "700"],
   variable: "--font-display",
   display: "swap",
 });
@@ -56,7 +56,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${dmSans.variable} ${syne.variable} ${dmMono.variable}`}
+      className={`${outfit.variable} ${dmSans.variable} ${spaceGrotesk.variable} ${dmMono.variable}`}
     >
       <body>
         <Navbar />

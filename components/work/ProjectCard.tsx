@@ -1,60 +1,70 @@
 "use client";
 
-import { motion } from "framer-motion";
-import type { Project } from "@/data/projects";
 import styles from "./ProjectCard.module.css";
 
-interface ProjectCardProps {
-  project: Project;
-  index: number;
+export interface FlipProject {
+  name: string;
+  description: string;
+  headline: string;
+  tech: string[];
+  url: string;
+  gradient: [string, string];
 }
 
-export function ProjectCard({ project, index }: ProjectCardProps) {
-  const inner = (
-    <div className={styles["project-card"]}>
-      <div className={styles["project-card__visual"]}>
-        <div
-          className={`${styles["project-card__gradient"]} bg-gradient-to-br ${project.gradient}`}
-        >
-          <span className={styles["project-card__watermark"]}>
-            {project.title}
-          </span>
-        </div>
-      </div>
+interface ProjectCardProps {
+  project: FlipProject;
+  delay?: number;
+}
 
-      <div className={styles["project-card__body"]}>
-        <h3 className={styles["project-card__title"]}>{project.title}</h3>
-        <p className={styles["project-card__description"]}>{project.description}</p>
-        <div className={styles["project-card__tech"]}>
-          {project.tech.map((t) => (
-            <span key={t} className={styles["project-card__tech-tag"]}>{t}</span>
-          ))}
+function cls(...names: (string | false | undefined)[]) {
+  return names.filter(Boolean).join(" ");
+}
+
+export function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
+  return (
+    <div
+      className={cls(styles.card, styles["card--animate"])}
+      style={{ transitionDelay: `${delay}s` }}
+    >
+      <div className={styles.card__inner}>
+        {/* Front */}
+        <div
+          className={styles.card__front}
+          style={{
+            background: `linear-gradient(135deg, ${project.gradient[0]}, ${project.gradient[1]})`,
+          }}
+        >
+          <div className={styles["card__front-overlay"]} />
+          <div className={styles["card__front-content"]}>
+            <h3 className={styles["card__front-name"]}>{project.name}</h3>
+            <p className={styles["card__front-headline"]}>{project.headline}</p>
+          </div>
         </div>
-        {project.highlight && (
-          <span className={styles["project-card__highlight"]}>{project.highlight}</span>
-        )}
+
+        {/* Back */}
+        <div className={styles.card__back}>
+          <div>
+            <span className={styles["card__back-label"]}>About this project</span>
+            <h3 className={styles["card__back-name"]}>{project.name}</h3>
+            <p className={styles["card__back-description"]}>{project.description}</p>
+          </div>
+          <div>
+            <div className={styles["card__back-tech"]}>
+              {project.tech.map((t) => (
+                <span key={t} className={styles["card__back-tech-pill"]}>{t}</span>
+              ))}
+            </div>
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles["card__back-link"]}
+            >
+              View live site &rarr;
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );
-
-  const card = (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
-    >
-      {inner}
-    </motion.div>
-  );
-
-  if (project.link && project.link !== "#") {
-    return (
-      <a href={project.link} target="_blank" rel="noopener noreferrer">
-        {card}
-      </a>
-    );
-  }
-
-  return card;
 }

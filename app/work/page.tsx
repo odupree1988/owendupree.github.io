@@ -1,5 +1,5 @@
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { ProjectCard } from "@/components/work/ProjectCard";
+import { WorkCard } from "@/components/work/WorkCard";
 import { projects } from "@/data/projects";
 
 export default function WorkPage() {
@@ -13,7 +13,7 @@ export default function WorkPage() {
 
         <div className="flex flex-col gap-8">
           {projects.map((project, i) => (
-            <ProjectCard key={project.slug} project={project} index={i} />
+            <WorkCard key={project.slug} project={project} index={i} />
           ))}
         </div>
       </div>

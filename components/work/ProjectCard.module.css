@@ -1,85 +1,184 @@
 @reference "../../app/globals.css";
 /* ═══════════════════════════════════════
-   ProjectCard Block
+   ProjectCard Block — 3D flip card
    ═══════════════════════════════════════ */
 
-.project-card {
-  @apply flex flex-col overflow-hidden rounded-xl border border-(--border-subtle) bg-(--bg-secondary) transition-all duration-200 ease-out;
+/* ── Wrapper (perspective + lift) ── */
+
+.card {
+  @apply w-full cursor-pointer;
+  perspective: 1000px;
+  aspect-ratio: 4 / 5;
+  transition: transform 0.3s ease;
 }
 
-.project-card:hover {
-  @apply -translate-y-0.5 border-(--border-hover);
+.card:hover {
+  transform: translateY(-4px);
 }
 
-/* ── Visual ── */
+/* ── Inner (the rotating piece) ── */
 
-.project-card__visual {
-  @apply relative w-full overflow-hidden aspect-video;
+.card__inner {
+  @apply relative w-full h-full;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
 }
 
-.project-card__gradient {
-  @apply absolute inset-0 flex items-center justify-center transition-transform duration-500;
+.card:hover .card__inner {
+  transform: rotateY(180deg);
 }
 
-.project-card:hover .project-card__gradient {
-  @apply scale-[1.02];
+/* ── Shared face styles ── */
+
+.card__front,
+.card__back {
+  @apply absolute inset-0 overflow-hidden;
+  backface-visibility: hidden;
+  border-radius: 16px;
 }
 
-.project-card__watermark {
-  @apply select-none text-5xl font-bold text-white/[0.07];
-  font-family: var(--font-heading);
+/* ── Front face ── */
+
+.card__front {
+  @apply flex flex-col justify-end p-7;
 }
 
-/* ── Body ── */
-
-.project-card__body {
-  @apply flex flex-1 flex-col justify-center gap-3 p-6;
+.card__front-overlay {
+  @apply absolute inset-0 pointer-events-none;
+  background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.6) 100%);
 }
 
-.project-card__title {
-  @apply text-lg font-semibold text-(--text-primary);
-  font-family: var(--font-heading);
+.card__front-content {
+  @apply relative z-1;
 }
 
-.project-card__description {
-  @apply text-sm leading-relaxed text-(--text-secondary);
+.card__front-name {
+  @apply text-white font-bold;
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1.1;
+  white-space: pre-line;
 }
 
-.project-card__tech {
-  @apply flex flex-wrap gap-2;
-}
-
-.project-card__tech-tag {
-  @apply rounded-full px-2.5 py-1 text-xs bg-(--bg-tertiary) text-(--text-tertiary);
+.card__front-headline {
+  @apply mt-2 text-(--accent);
   font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.5px;
 }
 
-.project-card__highlight {
-  @apply text-xs text-(--accent);
+/* ── Back face ── */
+
+.card__back {
+  @apply flex flex-col justify-between p-7;
+  transform: rotateY(180deg);
+  background: #0e0e0e;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.card__back-label {
+  @apply uppercase text-(--accent);
   font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
 }
 
-/* ── Responsive ── */
+.card__back-name {
+  @apply mt-2 text-white/90 font-bold;
+  font-family: var(--font-display);
+  font-size: 20px;
+}
 
-@media (min-width: 768px) {
-  .project-card {
-    @apply flex-row;
-  }
+.card__back-description {
+  @apply mt-3 text-white/45 font-light;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.7;
+}
 
-  .project-card__visual {
-    @apply w-[55%];
+.card__back-tech {
+  @apply flex flex-wrap gap-1.5 mt-auto pt-4;
+}
+
+.card__back-tech-pill {
+  @apply text-white/35;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 5px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+}
+
+.card__back-link {
+  @apply mt-4 no-underline text-(--accent);
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.card__back-link:hover {
+  @apply underline;
+}
+
+/* ── Mobile: stacked layout, no flip ── */
+
+@media (max-width: 767px) {
+  .card {
+    @apply cursor-default;
+    perspective: none;
     aspect-ratio: auto;
   }
 
-  .project-card__watermark {
-    @apply text-7xl;
+  .card:hover {
+    @apply translate-y-0;
   }
 
-  .project-card__body {
-    @apply p-8;
+  .card__inner {
+    @apply static;
+    transform-style: flat;
+    transition: none;
   }
 
-  .project-card__title {
-    @apply text-xl;
+  .card:hover .card__inner {
+    transform: none;
   }
+
+  .card__front,
+  .card__back {
+    @apply static;
+    backface-visibility: visible;
+    border-radius: 0;
+  }
+
+  /* Front becomes the gradient header */
+  .card__front {
+    @apply relative justify-end;
+    height: 200px;
+    border-radius: 16px 16px 0 0;
+  }
+
+  /* Back becomes the content below */
+  .card__back {
+    @apply relative;
+    transform: none;
+    border-radius: 0 0 16px 16px;
+    border-top: none;
+  }
+
+  /* Wrap the whole card visually */
+  .card__inner {
+    @apply overflow-hidden;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: #0e0e0e;
+  }
+}
+
+/* ── Animation ── */
+
+.card--animate {
+  @apply opacity-0 transition-all duration-800 ease-out translate-y-7;
+}
+
+.card--animate-visible {
+  @apply opacity-100 translate-y-0;
 }
