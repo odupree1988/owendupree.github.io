@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import styles from "./Navbar.module.css";
 
 const NAV_LINKS = [
@@ -60,6 +61,8 @@ export function Navbar() {
         <Link href="/contact" className={styles.navbar__pill}>
           Let&apos;s talk
         </Link>
+        <span className={styles.navbar__divider} />
+        <ThemeToggle />
       </div>
 
       {/* Mobile toggle */}

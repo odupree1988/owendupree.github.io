@@ -32,11 +32,31 @@
     --font-mono: 'DM Mono', monospace;
   }
 
+  [data-theme="light"] {
+    --bg-primary: #f5f5f3;
+    --bg-secondary: #eaeae8;
+    --bg-tertiary: #ddddd9;
+    --bg-hover: #d0d0cc;
+
+    --text-primary: #1a1a1a;
+    --text-secondary: #5c5c5c;
+    --text-tertiary: #8a8a8a;
+
+    --accent: #d4612e;
+    --accent-light: #c05828;
+    --accent-subtle: rgba(212, 97, 46, 0.10);
+    --accent-glow: rgba(212, 97, 46, 0.08);
+
+    --border-subtle: rgba(0, 0, 0, 0.08);
+    --border-hover: rgba(0, 0, 0, 0.15);
+  }
+
   html {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     scroll-behavior: smooth;
   }
+
 
   body {
     font-family: var(--font-body);
@@ -69,5 +89,17 @@
 
   ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.15);
+  }
+
+  [data-theme="light"] ::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+  }
+
+  [data-theme="light"] ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.12);
+  }
+
+  [data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.25);
   }
 }

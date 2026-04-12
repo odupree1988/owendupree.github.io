@@ -15,8 +15,13 @@ const SKILLS = [
   "Performance",
 ];
 
+const CODING_START = new Date(2021, 3); // April 2021
+const YEARS_CODING = Math.floor(
+  (Date.now() - CODING_START.getTime()) / (365.25 * 24 * 60 * 60 * 1000)
+);
+
 const STATS = [
-  { value: "4+", label: "Years" },
+  { value: `${YEARS_CODING}+`, label: "Years" },
   { value: "6+", label: "Brands" },
   { value: "10+", label: "Storefronts" },
 ];
@@ -64,6 +69,10 @@ export function Hero() {
         <div className={styles["hero__scroll-line"]} />
       </div>
 
+      {/* Stacked cards */}
+      <div className={styles["hero__card-back-2"]} />
+      <div className={styles["hero__card-back"]} />
+
       {/* Decorative rects */}
       <div className={styles.hero__deco}>
         <div className={styles["hero__deco-rect--filled"]} />
@@ -107,7 +116,7 @@ export function Hero() {
         >
           <p className={styles.hero__description}>
             I work with brands to build websites and digital experiences that
-            feel modern, approachable, and built with care — from the overall
+            feel modern, approachable, and built with care. From the overall
             look and feel down to the details that make things work.
           </p>
 

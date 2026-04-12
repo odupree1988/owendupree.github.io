@@ -24,7 +24,8 @@
 }
 
 .work-card__watermark {
-  @apply select-none text-5xl font-bold text-white/7;
+  @apply select-none text-5xl font-bold;
+  color: var(--border-subtle);
   font-family: var(--font-heading);
 }
 

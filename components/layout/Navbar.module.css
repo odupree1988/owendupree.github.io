@@ -7,26 +7,28 @@
   @apply fixed top-0 left-0 right-0 z-50 flex items-center justify-between;
   padding: 28px 48px;
   background: transparent;
+  border-bottom: 1px solid transparent;
   transition: background 0.3s, border-color 0.3s;
 }
 
 .navbar--scrolled {
   @apply backdrop-blur-lg;
-  background: rgba(6, 6, 6, 0.85);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: color-mix(in srgb, var(--bg-primary) 85%, transparent);
+  border-bottom-color: var(--border-subtle);
 }
 
 /* ── Brand ── */
 
 .navbar__brand {
-  @apply flex items-center gap-2.5 no-underline transition-colors text-white/50;
+  @apply flex items-center gap-2.5 no-underline transition-colors;
+  color: var(--text-secondary);
   font-family: var(--font-mono);
   font-size: 13px;
   letter-spacing: 0.5px;
 }
 
 .navbar__brand:hover {
-  @apply text-white/80;
+  color: var(--text-primary);
 }
 
 .navbar__dot {
@@ -46,28 +48,42 @@
 }
 
 .navbar__link {
-  @apply no-underline transition-colors text-xs text-white/35;
+  @apply no-underline transition-colors text-xs;
+  color: var(--text-tertiary);
   font-family: var(--font-mono);
   letter-spacing: 0.5px;
 }
 
 .navbar__link:hover {
-  @apply text-white/80;
+  color: var(--text-primary);
 }
 
 .navbar__link--active {
-  @apply text-white/70;
+  color: var(--text-primary);
 }
 
 .navbar__pill {
-  @apply no-underline rounded-3xl bg-transparent text-xs text-white/45 border border-white/15 py-2 px-5;
+  @apply no-underline rounded-3xl bg-transparent text-xs py-2 px-5;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-hover);
   font-family: var(--font-mono);
   letter-spacing: 0.5px;
   transition: border-color 0.3s, color 0.3s;
 }
 
 .navbar__pill:hover {
-  @apply border-white/40 text-white/80;
+  border-color: var(--text-tertiary);
+  color: var(--text-primary);
+}
+
+.navbar__divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+:global([data-theme="light"]) .navbar__divider {
+  background: var(--border-subtle);
 }
 
 /* ── Mobile Toggle ── */
@@ -83,7 +99,7 @@
 .navbar__toggle-bar {
   @apply w-full rounded transition-all duration-300;
   height: 2px;
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--text-secondary);
 }
 
 .navbar__toggle-bar--top-open {
@@ -102,7 +118,7 @@
 
 .navbar__overlay {
   @apply fixed inset-0 z-40 flex flex-col items-center justify-center transition-all duration-500;
-  background: #060606;
+  background: var(--bg-primary);
 }
 
 .navbar__overlay--closed {
@@ -110,7 +126,8 @@
 }
 
 .navbar__overlay-link {
-  @apply no-underline transition-colors py-4 text-3xl font-bold text-white/80;
+  @apply no-underline transition-colors py-4 text-3xl font-bold;
+  color: var(--text-primary);
   font-family: var(--font-display);
 }
 

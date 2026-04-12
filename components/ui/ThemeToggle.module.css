@@ -1,0 +1,36 @@
+@reference "../../app/globals.css";
+
+.track {
+  @apply relative flex items-center cursor-pointer;
+  width: 44px;
+  height: 24px;
+  border-radius: 12px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-subtle);
+  padding: 0;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.track:hover {
+  border-color: var(--border-hover);
+}
+
+.thumb {
+  @apply absolute flex items-center justify-center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  left: 2px;
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  transition: left 0.3s ease, background 0.3s, color 0.3s;
+}
+
+.thumb--light {
+  left: 22px;
+}
+
+.thumb svg {
+  width: 11px;
+  height: 11px;
+}

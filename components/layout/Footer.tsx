@@ -7,7 +7,7 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={styles.footer__inner}>
         <span className={styles.footer__copy}>
-          &copy; {new Date().getFullYear()} {siteConfig.name}
+          &copy; 2024 {siteConfig.name}
         </span>
         <div className={styles.footer__links}>
           <Link href="/work" className={styles.footer__link}>Work</Link>
