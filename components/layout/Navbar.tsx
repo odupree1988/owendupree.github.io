@@ -3,105 +3,85 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import styles from "./Navbar.module.css";
 
-const navLinks = [
+const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/work", label: "Work" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
+function cls(...names: (string | false | undefined)[]) {
+  return names.filter(Boolean).join(" ");
+}
+
 export function Navbar() {
   const pathname = usePathname();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  // Hero has its own nav on the home page
+  if (pathname === "/") return null;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
-    setMobileMenuOpen(false);
+    setMenuOpen(false);
   }, [pathname]);
 
   return (
-    <nav
-      className={`fixed top-0 z-50 w-full transition-colors duration-300 ${
-        scrolled
-          ? "border-b border-[var(--border-subtle)] bg-[var(--bg-primary)]/80 backdrop-blur-lg"
-          : "bg-transparent"
-      }`}
-    >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-        <Link
-          href="/"
-          className="font-[family-name:var(--font-heading)] text-sm font-semibold text-[var(--text-primary)] transition-colors hover:text-[var(--accent)]"
-        >
+    <nav className={cls(styles.navbar, scrolled && styles["navbar--scrolled"])}>
+      <div className={styles.navbar__inner}>
+        <Link href="/" className={styles.navbar__brand}>
           owen dupree
         </Link>
 
         {/* Desktop */}
-        <div className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
+        <div className={styles.navbar__links}>
+          {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-colors ${
-                pathname === link.href
-                  ? "text-[var(--accent)]"
-                  : "text-[var(--text-secondary)] hover:text-[var(--text-primary)]"
-              }`}
+              className={cls(
+                styles.navbar__link,
+                pathname === link.href && styles["navbar__link--active"]
+              )}
             >
               {link.label}
             </Link>
           ))}
         </div>
 
-        {/* Mobile hamburger */}
+        {/* Mobile toggle */}
         <button
-          className="relative flex h-10 w-10 items-center justify-center md:hidden"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className={styles.navbar__toggle}
+          onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
         >
-          <div className="flex h-5 w-6 flex-col justify-between">
-            <span
-              className={`h-0.5 w-full rounded bg-[var(--text-primary)] transition-all duration-300 ${
-                mobileMenuOpen ? "translate-y-2 rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`h-0.5 w-full rounded bg-[var(--text-primary)] transition-all duration-300 ${
-                mobileMenuOpen ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`h-0.5 w-full rounded bg-[var(--text-primary)] transition-all duration-300 ${
-                mobileMenuOpen ? "-translate-y-2 -rotate-45" : ""
-              }`}
-            />
+          <div className={styles["navbar__toggle-bars"]}>
+            <span className={cls(styles["navbar__toggle-bar"], menuOpen && styles["navbar__toggle-bar--top-open"])} />
+            <span className={cls(styles["navbar__toggle-bar"], menuOpen && styles["navbar__toggle-bar--mid-open"])} />
+            <span className={cls(styles["navbar__toggle-bar"], menuOpen && styles["navbar__toggle-bar--bot-open"])} />
           </div>
         </button>
       </div>
 
       {/* Mobile overlay */}
-      <div
-        className={`fixed inset-0 z-40 flex flex-col items-center justify-center bg-[var(--bg-primary)] transition-all duration-500 md:hidden ${
-          mobileMenuOpen
-            ? "opacity-100"
-            : "pointer-events-none opacity-0"
-        }`}
-      >
-        {navLinks.map((link) => (
+      <div className={cls(styles.navbar__overlay, !menuOpen && styles["navbar__overlay--closed"])}>
+        {NAV_LINKS.map((link) => (
           <Link
             key={link.href}
             href={link.href}
-            className={`py-4 font-[family-name:var(--font-heading)] text-3xl font-semibold transition-colors ${
-              pathname === link.href
-                ? "text-[var(--accent)]"
-                : "text-[var(--text-primary)] hover:text-[var(--accent)]"
-            }`}
+            className={cls(
+              styles["navbar__overlay-link"],
+              pathname === link.href && styles["navbar__overlay-link--active"]
+            )}
           >
             {link.label}
           </Link>

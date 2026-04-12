@@ -1,0 +1,35 @@
+@reference "../../app/globals.css";
+/* ═══════════════════════════════════════
+   HomeCTA Block
+   ═══════════════════════════════════════ */
+
+.home-cta {
+  @apply px-6 py-24;
+}
+
+.home-cta__inner {
+  @apply mx-auto max-w-2xl text-center;
+}
+
+.home-cta__title {
+  @apply text-3xl font-semibold text-(--text-primary);
+  font-family: var(--font-heading);
+}
+
+.home-cta__subtitle {
+  @apply mt-4 text-base text-(--text-secondary);
+}
+
+.home-cta__actions {
+  @apply mt-8 flex justify-center gap-6;
+}
+
+.home-cta__link {
+  @apply text-sm font-medium no-underline transition-colors text-(--accent) hover:underline;
+}
+
+@media (min-width: 768px) {
+  .home-cta__title {
+    @apply text-4xl;
+  }
+}

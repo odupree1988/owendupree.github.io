@@ -1,0 +1,86 @@
+@reference "../../app/globals.css";
+/* ═══════════════════════════════════════
+   ExperienceTimeline Block
+   ═══════════════════════════════════════ */
+
+.timeline {
+  @apply px-6 py-20 bg-(--bg-secondary);
+}
+
+.timeline__inner {
+  @apply mx-auto max-w-3xl;
+}
+
+.timeline__heading {
+  @apply mb-8 text-2xl font-semibold text-(--text-primary);
+  font-family: var(--font-heading);
+}
+
+.timeline__heading--spaced {
+  @apply mb-6 mt-16;
+}
+
+/* ── Jobs ── */
+
+.timeline__jobs {
+  @apply space-y-8;
+}
+
+.timeline__job {
+  @apply pl-6 border-l-2 border-(--border-hover);
+}
+
+.timeline__job-role {
+  @apply text-lg font-semibold text-(--text-primary);
+  font-family: var(--font-heading);
+}
+
+.timeline__job-meta {
+  @apply mt-1 text-sm text-(--text-tertiary);
+}
+
+.timeline__job-bullets {
+  @apply mt-3 space-y-1.5;
+}
+
+.timeline__job-bullet {
+  @apply text-sm leading-relaxed text-(--text-secondary);
+}
+
+/* ── Skills ── */
+
+.timeline__skills {
+  @apply space-y-4;
+}
+
+.timeline__skill-category {
+  @apply text-sm font-medium capitalize text-(--text-primary);
+}
+
+.timeline__skill-items {
+  @apply ml-2 text-sm text-(--text-secondary);
+}
+
+/* ── Certifications ── */
+
+.timeline__certs {
+  @apply space-y-3;
+}
+
+.timeline__cert-title {
+  @apply text-sm font-medium text-(--text-primary);
+}
+
+.timeline__cert-issuer {
+  @apply text-xs text-(--text-tertiary);
+}
+
+/* ── Education ── */
+
+.timeline__edu-degree {
+  @apply text-sm font-medium text-(--text-primary);
+}
+
+.timeline__edu-school {
+  @apply text-xs text-(--text-tertiary);
+}

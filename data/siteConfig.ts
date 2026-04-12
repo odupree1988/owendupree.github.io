@@ -16,7 +16,7 @@ export const siteConfig = {
   ],
 
   heroIntro:
-    "I build websites and ecommerce experiences that look great, load fast, and drive real results. With 4+ years of experience across enterprise brands and small businesses, I focus on clean implementation, strong UX, and making sure what I build actually moves the needle for the people I work with.",
+    "I build modern, thoughtful websites and digital experiences for brands that want something polished, approachable, and built with care. I focus on creating work that feels easy to use, well-crafted, and aligned with real goals.",
 
   aboutBio: [
     "I'm a frontend engineer with 4+ years of experience shipping production ecommerce and web experiences for major consumer brands.",

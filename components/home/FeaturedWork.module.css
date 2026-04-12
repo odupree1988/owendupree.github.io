@@ -1,0 +1,24 @@
+@reference "../../app/globals.css";
+/* ═══════════════════════════════════════
+   FeaturedWork Block
+   ═══════════════════════════════════════ */
+
+.featured-work {
+  @apply px-6 py-20 bg-(--bg-secondary);
+}
+
+.featured-work__inner {
+  @apply mx-auto max-w-5xl;
+}
+
+.featured-work__list {
+  @apply flex flex-col gap-8;
+}
+
+.featured-work__cta {
+  @apply mt-12 text-center;
+}
+
+.featured-work__link {
+  @apply text-sm font-medium no-underline transition-colors text-(--accent) hover:underline;
+}

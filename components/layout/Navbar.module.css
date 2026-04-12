@@ -1,0 +1,110 @@
+@reference "../../app/globals.css";
+/* ═══════════════════════════════════════
+   Navbar Block
+   ═══════════════════════════════════════ */
+
+.navbar {
+  @apply fixed top-0 z-50 w-full bg-transparent transition-colors duration-300;
+}
+
+.navbar--scrolled {
+  @apply backdrop-blur-lg border-b border-(--border-subtle);
+  background: rgba(6, 6, 6, 0.8);
+}
+
+.navbar__inner {
+  @apply relative z-50 mx-auto flex items-center justify-between max-w-6xl px-6 py-4;
+}
+
+.navbar__brand {
+  @apply no-underline transition-colors text-sm font-semibold text-(--text-primary);
+  font-family: var(--font-heading);
+}
+
+.navbar__brand:hover {
+  @apply text-(--accent);
+}
+
+/* ── Desktop Links ── */
+
+.navbar__links {
+  @apply hidden items-center gap-8;
+}
+
+.navbar__link {
+  @apply no-underline transition-colors text-sm font-medium text-(--text-secondary);
+}
+
+.navbar__link:hover {
+  @apply text-(--text-primary);
+}
+
+.navbar__link--active {
+  @apply text-(--accent);
+}
+
+/* ── Mobile Toggle ── */
+
+.navbar__toggle {
+  @apply relative flex items-center justify-center w-10 h-10;
+}
+
+.navbar__toggle-bars {
+  @apply flex flex-col justify-between w-6 h-5;
+}
+
+.navbar__toggle-bar {
+  @apply w-full rounded transition-all duration-300 bg-(--text-primary);
+  height: 2px;
+}
+
+.navbar__toggle-bar--top-open {
+  transform: translateY(0.5rem) rotate(45deg);
+}
+
+.navbar__toggle-bar--mid-open {
+  @apply opacity-0;
+}
+
+.navbar__toggle-bar--bot-open {
+  transform: translateY(-0.5rem) rotate(-45deg);
+}
+
+/* ── Mobile Overlay ── */
+
+.navbar__overlay {
+  @apply fixed inset-0 z-40 flex flex-col items-center justify-center bg-(--bg-primary) transition-all duration-500;
+}
+
+.navbar__overlay--closed {
+  @apply pointer-events-none opacity-0;
+}
+
+.navbar__overlay-link {
+  @apply no-underline transition-colors py-4 text-3xl font-semibold text-(--text-primary);
+  font-family: var(--font-heading);
+}
+
+.navbar__overlay-link:hover {
+  @apply text-(--accent);
+}
+
+.navbar__overlay-link--active {
+  @apply text-(--accent);
+}
+
+/* ── Responsive ── */
+
+@media (min-width: 768px) {
+  .navbar__links {
+    @apply flex;
+  }
+
+  .navbar__toggle {
+    @apply hidden;
+  }
+
+  .navbar__overlay {
+    @apply hidden;
+  }
+}

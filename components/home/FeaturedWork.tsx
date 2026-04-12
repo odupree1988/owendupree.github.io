@@ -4,24 +4,20 @@ import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProjectCard } from "@/components/work/ProjectCard";
 import { featuredProjects } from "@/data/projects";
+import styles from "./FeaturedWork.module.css";
 
 export function FeaturedWork() {
   return (
-    <section className="bg-[var(--bg-secondary)] px-6 py-20">
-      <div className="mx-auto max-w-5xl">
+    <section className={styles["featured-work"]}>
+      <div className={styles["featured-work__inner"]}>
         <SectionHeading title="Featured Work" subtitle="Recent projects I've shipped" />
-
-        <div className="flex flex-col gap-8">
+        <div className={styles["featured-work__list"]}>
           {featuredProjects.map((project, i) => (
             <ProjectCard key={project.slug} project={project} index={i} />
           ))}
         </div>
-
-        <div className="mt-12 text-center">
-          <Link
-            href="/work"
-            className="text-sm font-medium text-[var(--accent)] transition-colors hover:underline"
-          >
+        <div className={styles["featured-work__cta"]}>
+          <Link href="/work" className={styles["featured-work__link"]}>
             View all projects &rarr;
           </Link>
         </div>

@@ -1,0 +1,40 @@
+@reference "../../app/globals.css";
+/* ═══════════════════════════════════════
+   ContactSection Block
+   ═══════════════════════════════════════ */
+
+.contact {
+  @apply flex items-center px-6 py-20;
+  min-height: calc(100vh - 4rem);
+}
+
+.contact__inner {
+  @apply mx-auto w-full max-w-2xl text-center;
+}
+
+.contact__title {
+  @apply text-3xl font-semibold text-(--text-primary);
+  font-family: var(--font-heading);
+}
+
+.contact__subtitle {
+  @apply mt-4 text-base text-(--text-secondary);
+}
+
+.contact__icons {
+  @apply mt-12 flex justify-center gap-5;
+}
+
+.contact__icon-link {
+  @apply flex items-center justify-center w-14 h-14 rounded-xl border border-(--border-subtle) bg-(--bg-secondary) text-(--text-secondary) transition-all duration-200;
+}
+
+.contact__icon-link:hover {
+  @apply -translate-y-0.5 border-(--border-hover) text-(--accent);
+}
+
+@media (min-width: 768px) {
+  .contact__title {
+    @apply text-4xl;
+  }
+}

@@ -1,4 +1,5 @@
 import { ScrollReveal } from "./ScrollReveal";
+import styles from "./SectionHeading.module.css";
 
 interface SectionHeadingProps {
   title: string;
@@ -7,14 +8,10 @@ interface SectionHeadingProps {
 
 export function SectionHeading({ title, subtitle }: SectionHeadingProps) {
   return (
-    <ScrollReveal className="mb-12 text-center md:mb-16">
-      <h2 className="font-[family-name:var(--font-heading)] text-3xl font-600 text-[var(--text-primary)] md:text-4xl">
-        {title}
-      </h2>
+    <ScrollReveal className={styles["section-heading"]}>
+      <h2 className={styles["section-heading__title"]}>{title}</h2>
       {subtitle && (
-        <p className="mt-3 text-base text-[var(--text-secondary)]">
-          {subtitle}
-        </p>
+        <p className={styles["section-heading__subtitle"]}>{subtitle}</p>
       )}
     </ScrollReveal>
   );

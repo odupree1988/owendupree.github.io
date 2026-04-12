@@ -1,89 +1,178 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useEffect, useRef } from "react";
 import Link from "next/link";
-import { FloatingPill } from "@/components/ui/FloatingPill";
-import { StrokeName } from "@/components/home/StrokeName";
-import { siteConfig } from "@/data/siteConfig";
+import styles from "./Hero.module.css";
+
+const SKILLS = [
+  "React",
+  "Shopify",
+  "Hydrogen",
+  "TypeScript",
+  "GraphQL",
+  "Next.js",
+  "Headless CMS",
+  "Performance",
+];
+
+const STATS = [
+  { value: "4+", label: "Years" },
+  { value: "6+", label: "Brands" },
+  { value: "10+", label: "Storefronts" },
+];
+
+function cls(...names: string[]) {
+  return names.join(" ");
+}
 
 export function Hero() {
-  return (
-    <section className="relative min-h-screen overflow-hidden">
-      {/* Background image with Ken Burns */}
-      <motion.div
-        className="absolute inset-0"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1 }}
-      >
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: "url('/hero-bg.jpg')",
-            animation: "kenBurns 20s ease-out forwards",
-          }}
-        />
-      </motion.div>
+  const sectionRef = useRef<HTMLElement>(null);
 
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[rgba(12,12,14,0.75)] to-[rgba(12,12,14,0.85)]" />
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const animated = section.querySelectorAll(
+      `.${styles["hero__animate-in"]}, .${styles.hero__divider}`
+    );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            if (el.classList.contains(styles.hero__divider)) {
+              el.classList.add(styles["hero__divider--visible"]);
+            } else {
+              el.classList.add(styles["hero__animate-in--visible"]);
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    animated.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section ref={sectionRef} className={styles.hero}>
+      {/* Nav */}
+      <nav className={styles.hero__nav}>
+        <Link href="/" className={styles["hero__nav-brand"]}>
+          <span className={styles["hero__nav-dot"]} />
+          owen dupree
+        </Link>
+        <div className={styles["hero__nav-links"]}>
+          <Link href="/work" className={styles["hero__nav-link"]}>Work</Link>
+          <Link href="/about" className={styles["hero__nav-link"]}>About</Link>
+          <Link href="/contact" className={styles["hero__nav-link"]}>Contact</Link>
+          <Link href="/contact" className={styles["hero__nav-pill"]}>Let&apos;s talk</Link>
+        </div>
+      </nav>
+
+      {/* Scroll indicator */}
+      <div className={styles.hero__scroll}>
+        <span className={styles["hero__scroll-text"]}>SCROLL</span>
+        <div className={styles["hero__scroll-line"]} />
+      </div>
+
+      {/* Decorative rects */}
+      <div className={styles.hero__deco}>
+        <div className={styles["hero__deco-rect--filled"]} />
+        <div className={styles["hero__deco-rect--outlined"]} />
+      </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto grid min-h-screen max-w-6xl items-center gap-12 px-6 py-20 md:grid-cols-[1.5fr_1fr] lg:gap-20">
-        {/* Left column */}
-        <div>
-          {/* Name — typewriter */}
-          <StrokeName text={siteConfig.name} />
+      <div className={styles.hero__content}>
+        {/* Label */}
+        <div
+          className={cls(styles.hero__label, styles["hero__animate-in"])}
+          style={{ transitionDelay: "0.2s" }}
+        >
+          <div className={styles["hero__label-line"]} />
+          <span className={styles["hero__label-text"]}>FRONTEND ENGINEER</span>
+        </div>
 
-          {/* Title — fades up near end of name animation */}
-          <motion.p
-            className="mt-4 text-lg text-white/70"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 2.2, ease: "easeOut" }}
+        {/* Name */}
+        <h1 className={styles.hero__name}>
+          <span
+            className={cls(styles["hero__name-first"], styles["hero__animate-in"])}
+            style={{ transitionDelay: "0.35s" }}
           >
-            {siteConfig.title}
-          </motion.p>
+            OWEN
+          </span>
+          <span
+            className={cls(styles["hero__name-last"], styles["hero__animate-in"])}
+            style={{ transitionDelay: "0.5s" }}
+          >
+            DUPREE
+          </span>
+        </h1>
 
-          {/* Pills */}
-          <div className="mt-8 flex flex-wrap gap-3">
-            {siteConfig.heroPills.map((pill, i) => (
-              <FloatingPill key={pill} label={pill} index={i} />
-            ))}
+        {/* Divider */}
+        <div className={styles.hero__divider} style={{ transitionDelay: "0.65s" }} />
+
+        {/* Columns */}
+        <div
+          className={cls(styles.hero__columns, styles["hero__animate-in"])}
+          style={{ transitionDelay: "0.75s" }}
+        >
+          <p className={styles.hero__description}>
+            I work with brands to build websites and digital experiences that
+            feel modern, approachable, and built with care — from the overall
+            look and feel down to the details that make things work.
+          </p>
+
+          <div className={styles.hero__actions}>
+            <div className={styles["hero__actions-inner"]}>
+              <Link href="/work" className={styles["hero__cta-button"]}>
+                <svg
+                  viewBox="0 0 24 24"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M7 17L17 7" />
+                  <path d="M7 7h10v10" />
+                </svg>
+              </Link>
+              <Link href="/work" className={styles["hero__cta-label"]}>View work</Link>
+              <div className={styles["hero__actions-divider"]} />
+              <div className={styles.hero__location}>
+                <span className={styles["hero__location-label"]}>BASED IN</span>
+                <span className={styles["hero__location-value"]}>Florida, US</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Right column */}
-        <div>
-          <motion.p
-            className="text-base leading-relaxed text-white/70 md:text-lg"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 3.4, ease: "easeOut" }}
-          >
-            {siteConfig.heroIntro}
-          </motion.p>
-
-          <motion.div
-            className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-6"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 3.8, ease: "easeOut" }}
-          >
-            <Link
-              href="/work"
-              className="text-sm font-medium text-[var(--accent)] transition-colors hover:underline"
-            >
-              View my work &rarr;
-            </Link>
-            <Link
-              href="/contact"
-              className="text-sm font-medium text-white/50 transition-colors hover:text-[var(--accent)]"
-            >
-              Get in touch &rarr;
-            </Link>
-          </motion.div>
+        {/* Skills */}
+        <div
+          className={cls(styles.hero__skills, styles["hero__animate-in"])}
+          style={{ transitionDelay: "0.9s" }}
+        >
+          {SKILLS.map((skill) => (
+            <span key={skill} className={styles.hero__skill}>{skill}</span>
+          ))}
         </div>
+      </div>
+
+      {/* Stats */}
+      <div
+        className={cls(styles.hero__stats, styles["hero__animate-in"])}
+        style={{ transitionDelay: "1.05s" }}
+      >
+        {STATS.map((stat, i) => (
+          <div key={stat.label} style={{ display: "contents" }}>
+            {i > 0 && <div className={styles["hero__stat-divider"]} />}
+            <div className={styles.hero__stat}>
+              <span className={styles["hero__stat-value"]}>{stat.value}</span>
+              <span className={styles["hero__stat-label"]}>{stat.label}</span>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );

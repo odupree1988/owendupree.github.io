@@ -4,34 +4,32 @@
 
 @layer base {
   :root {
-    /* Backgrounds — warm, not cold/pure black */
-    --bg-primary: #0c0c0e;
-    --bg-secondary: #141416;
+    /* Backgrounds */
+    --bg-primary: #060606;
+    --bg-secondary: #111113;
     --bg-tertiary: #1c1c20;
     --bg-hover: #242428;
 
-    /* Text — warm off-whites and grays */
+    /* Text */
     --text-primary: #ececee;
     --text-secondary: #94949c;
     --text-tertiary: #56565e;
 
-    /* Accent — warm coral-orange */
+    /* Accent */
     --accent: #e8734a;
     --accent-light: #f09070;
     --accent-subtle: rgba(232, 115, 74, 0.10);
     --accent-glow: rgba(232, 115, 74, 0.08);
 
-    /* Borders — softer */
+    /* Borders */
     --border-subtle: rgba(255, 255, 255, 0.06);
     --border-hover: rgba(255, 255, 255, 0.12);
 
-    /* Hero background */
-    --gradient-hero: radial-gradient(ellipse at 30% 50%, rgba(232, 115, 74, 0.06) 0%, transparent 60%);
-
-    /* Font families */
+    /* Font families — set by next/font CSS variables */
+    --font-display: 'Syne', sans-serif;
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'DM Sans', sans-serif;
-    --font-mono: 'IBM Plex Mono', monospace;
+    --font-mono: 'DM Mono', monospace;
   }
 
   html {
@@ -54,39 +52,22 @@
     background-color: var(--accent);
     color: var(--bg-primary);
   }
-}
 
-@keyframes kenBurns {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.18); }
-}
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
 
-.pill-shimmer {
-  position: relative;
-  overflow: hidden;
-}
+  ::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+  }
 
-.pill-shimmer::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.08) 40%,
-    rgba(255, 255, 255, 0.15) 50%,
-    rgba(255, 255, 255, 0.08) 60%,
-    transparent 100%
-  );
-  animation: shimmer var(--shimmer-duration, 6s) var(--shimmer-delay, 0s) ease-in-out infinite;
-  pointer-events: none;
-}
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+  }
 
-@keyframes shimmer {
-  0%   { left: -100%; }
-  30%  { left: 150%; }
-  100% { left: 150%; }
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.15);
+  }
 }

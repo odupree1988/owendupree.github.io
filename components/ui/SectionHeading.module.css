@@ -1,0 +1,27 @@
+@reference "../../app/globals.css";
+/* ═══════════════════════════════════════
+   SectionHeading Block
+   ═══════════════════════════════════════ */
+
+.section-heading {
+  @apply mb-12 text-center;
+}
+
+.section-heading__title {
+  @apply text-3xl font-semibold text-(--text-primary);
+  font-family: var(--font-heading);
+}
+
+.section-heading__subtitle {
+  @apply mt-3 text-base text-(--text-secondary);
+}
+
+@media (min-width: 768px) {
+  .section-heading {
+    @apply mb-16;
+  }
+
+  .section-heading__title {
+    @apply text-4xl;
+  }
+}

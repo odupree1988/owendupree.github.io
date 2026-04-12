@@ -1,0 +1,378 @@
+@reference "../../app/globals.css";
+/* ═══════════════════════════════════════
+   Hero Block
+   ═══════════════════════════════════════ */
+
+.hero {
+  @apply relative min-h-screen overflow-hidden;
+  background: #060606;
+  font-family: var(--font-mono);
+}
+
+.hero::before {
+  content: "";
+  @apply absolute inset-0 pointer-events-none z-1 bg-repeat;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+}
+
+/* ── Hero Nav ── */
+
+.hero__nav {
+  @apply absolute top-0 left-0 right-0 z-10 flex items-center justify-between py-7 px-12;
+}
+
+.hero__nav-brand {
+  @apply flex items-center gap-2.5 no-underline transition-colors text-white/50;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.hero__nav-brand:hover {
+  @apply text-white/80;
+}
+
+.hero__nav-dot {
+  @apply w-1.5 h-1.5 rounded-full bg-(--accent);
+  animation: hero-pulse 3s ease-in-out infinite;
+}
+
+@keyframes hero-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.hero__nav-links {
+  @apply flex items-center gap-8;
+}
+
+.hero__nav-link {
+  @apply no-underline transition-colors text-xs text-white/35;
+  font-family: var(--font-mono);
+  letter-spacing: 0.5px;
+}
+
+.hero__nav-link:hover {
+  @apply text-white/80;
+}
+
+.hero__nav-pill {
+  @apply no-underline rounded-3xl bg-transparent text-xs text-white/45 border border-white/15 py-2 px-5;
+  font-family: var(--font-mono);
+  letter-spacing: 0.5px;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+.hero__nav-pill:hover {
+  @apply border-white/40 text-white/80;
+}
+
+/* ── Scroll Indicator ── */
+
+.hero__scroll {
+  @apply absolute z-5 flex flex-col items-center gap-4 left-12 top-1/2 -translate-y-1/2;
+}
+
+.hero__scroll-text {
+  @apply tracking-widest text-white/20 rotate-180;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  writing-mode: vertical-rl;
+}
+
+.hero__scroll-line {
+  @apply relative overflow-hidden w-px h-12 bg-white/7;
+}
+
+.hero__scroll-line::after {
+  content: "";
+  @apply absolute left-0 w-px h-3 bg-(--accent);
+  animation: hero-scroll-pulse 2s ease-in-out infinite;
+}
+
+@keyframes hero-scroll-pulse {
+  0% { top: -12px; opacity: 0; }
+  30% { opacity: 1; }
+  100% { top: 48px; opacity: 0; }
+}
+
+/* ── Decorative Rects ── */
+
+.hero__deco {
+  @apply absolute pointer-events-none;
+  top: 100px;
+  right: -60px;
+}
+
+.hero__deco-rect--filled {
+  @apply absolute top-0 right-0 rounded-lg opacity-35 -rotate-6;
+  width: 250px;
+  height: 350px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), transparent);
+}
+
+.hero__deco-rect--outlined {
+  @apply absolute rounded-lg opacity-30 top-5 -rotate-3 border;
+  right: 30px;
+  width: 250px;
+  height: 350px;
+  border-color: rgba(232, 115, 74, 0.15);
+}
+
+/* ── Content ── */
+
+.hero__content {
+  @apply relative z-2 mx-auto;
+  max-width: 1400px;
+  padding: 140px 100px 0;
+}
+
+/* ── Label ── */
+
+.hero__label {
+  @apply flex items-center gap-4;
+}
+
+.hero__label-line {
+  @apply w-12 h-px bg-(--accent);
+}
+
+.hero__label-text {
+  @apply font-medium text-(--accent);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+/* ── Name ── */
+
+.hero__name {
+  @apply mt-6 font-extrabold;
+  font-family: var(--font-display);
+  font-size: clamp(56px, 8vw, 100px);
+  line-height: 0.95;
+  letter-spacing: -3px;
+}
+
+.hero__name-first {
+  @apply block text-white;
+}
+
+.hero__name-last {
+  @apply block text-transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.5);
+  transition: color 0.4s ease, -webkit-text-stroke-color 0.4s ease;
+}
+
+.hero__name-last:hover {
+  @apply text-white;
+  -webkit-text-stroke-color: transparent;
+}
+
+/* ── Divider ── */
+
+.hero__divider {
+  @apply my-10 h-px bg-white/7 origin-left scale-x-0;
+  transition: transform 0.8s ease-out;
+}
+
+.hero__divider--visible {
+  @apply scale-x-100;
+}
+
+/* ── Columns ── */
+
+.hero__columns {
+  @apply grid grid-cols-2 gap-20;
+}
+
+/* ── Description ── */
+
+.hero__description {
+  @apply font-light text-white/45;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  line-height: 1.85;
+  max-width: 420px;
+}
+
+/* ── Actions ── */
+
+.hero__actions {
+  @apply flex items-start justify-end pt-1;
+}
+
+.hero__actions-inner {
+  @apply flex items-center gap-6;
+}
+
+.hero__cta-button {
+  @apply flex items-center justify-center w-12 h-12 rounded-full cursor-pointer shrink-0 border border-(--accent) bg-transparent;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.hero__cta-button:hover {
+  @apply bg-(--accent);
+}
+
+.hero__cta-button svg {
+  @apply w-4 h-4 fill-none stroke-(--accent);
+  transition: stroke 0.3s;
+}
+
+.hero__cta-button:hover svg {
+  stroke: #060606;
+}
+
+.hero__cta-label {
+  @apply no-underline whitespace-nowrap text-(--accent);
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+.hero__actions-divider {
+  @apply h-8 w-px bg-white/8;
+}
+
+/* ── Location ── */
+
+.hero__location {
+  @apply flex flex-col gap-1;
+}
+
+.hero__location-label {
+  @apply font-medium tracking-widest text-white/20;
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.hero__location-value {
+  @apply text-white/45;
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+
+/* ── Skills ── */
+
+.hero__skills {
+  @apply flex flex-wrap gap-2 mt-12;
+}
+
+.hero__skill {
+  @apply tracking-wide border border-white/7 bg-white/2 text-white/30;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 7px 18px;
+  border-radius: 20px;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+.hero__skill:hover {
+  @apply border-white/20 text-white/60;
+}
+
+/* ── Stats ── */
+
+.hero__stats {
+  @apply absolute z-5 flex items-center gap-5 right-12 bottom-8;
+}
+
+.hero__stat {
+  @apply flex flex-col items-end gap-0.5;
+}
+
+.hero__stat-value {
+  @apply font-medium tracking-wide text-white/20;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.hero__stat-label {
+  @apply tracking-wide text-white/12;
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.hero__stat-divider {
+  @apply h-4 w-px bg-white/8;
+}
+
+/* ── Animation ── */
+
+.hero__animate-in {
+  @apply opacity-0 transition-all duration-800 ease-out translate-y-7;
+}
+
+.hero__animate-in--visible {
+  @apply opacity-100 translate-y-0;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 1024px) {
+  .hero__content {
+    @apply px-12;
+    padding-top: 140px;
+  }
+
+  .hero__columns {
+    @apply grid-cols-1 gap-10;
+  }
+
+  .hero__actions {
+    @apply justify-start;
+  }
+
+  .hero__scroll {
+    @apply hidden;
+  }
+
+  .hero__deco {
+    @apply hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero__nav {
+    @apply px-6 py-5;
+  }
+
+  .hero__nav-link {
+    @apply hidden;
+  }
+
+  .hero__content {
+    @apply px-6;
+    padding-top: 120px;
+  }
+
+  .hero__name {
+    letter-spacing: -1.5px;
+  }
+
+  .hero__columns {
+    @apply gap-8;
+  }
+
+  .hero__stats {
+    @apply relative mt-12 right-auto bottom-auto justify-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__name {
+    letter-spacing: -1px;
+  }
+
+  .hero__label-line {
+    @apply w-8;
+  }
+
+  .hero__label-text {
+    @apply tracking-widest;
+    font-size: 10px;
+  }
+}

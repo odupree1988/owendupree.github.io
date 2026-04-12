@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit, DM_Sans, IBM_Plex_Mono } from "next/font/google";
+import { Outfit, DM_Sans, Syne, DM_Mono } from "next/font/google";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { siteConfig } from "@/data/siteConfig";
@@ -19,9 +19,16 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
-const ibmPlexMono = IBM_Plex_Mono({
+const syne = Syne({
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "700", "800"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const dmMono = DM_Mono({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
   variable: "--font-mono",
   display: "swap",
 });
@@ -49,11 +56,11 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${dmSans.variable} ${ibmPlexMono.variable}`}
+      className={`${outfit.variable} ${dmSans.variable} ${syne.variable} ${dmMono.variable}`}
     >
-      <body className="bg-[var(--bg-primary)] text-[var(--text-primary)] font-[family-name:var(--font-body)] antialiased">
+      <body>
         <Navbar />
-        <main className="pt-16">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
