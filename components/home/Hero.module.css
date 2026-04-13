@@ -683,16 +683,16 @@
 
   .hero__content {
     @apply px-6;
-    padding-top: 100px;
+    padding-top: 120px;
   }
 
   .hero__name {
-    @apply mt-3;
+    @apply mt-5;
     letter-spacing: -1.5px;
   }
 
   .hero__divider {
-    @apply my-5;
+    @apply my-8;
   }
 
   .hero__description {
