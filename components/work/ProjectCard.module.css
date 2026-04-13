@@ -14,7 +14,7 @@
 }
 
 .card:hover {
-  transform: none;
+  @apply transform-none;
 }
 
 /* ── Inner (the rotating piece) ── */
@@ -33,9 +33,8 @@
 
 .card__front,
 .card__back {
-  @apply absolute inset-0 overflow-hidden;
+  @apply absolute inset-0 overflow-hidden rounded-2xl;
   backface-visibility: hidden;
-  border-radius: 16px;
   box-shadow:
     0 1px 3px rgba(0, 0, 0, 0.12),
     0 6px 16px rgba(0, 0, 0, 0.08),
@@ -57,8 +56,7 @@
 /* Glossy diagonal highlight */
 .card__inner::after {
   content: "";
-  @apply absolute inset-0 pointer-events-none;
-  border-radius: 16px;
+  @apply absolute inset-0 pointer-events-none rounded-2xl z-10;
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.08) 0%,
@@ -66,7 +64,6 @@
     transparent 50%,
     transparent 100%
   );
-  z-index: 10;
 }
 
 :global([data-theme="light"]) .card__inner::after {
@@ -83,30 +80,28 @@
 .card__front::before,
 .card__back::before {
   content: "";
-  @apply absolute top-0 left-0 right-0;
+  @apply absolute top-0 left-0 right-0 z-12 opacity-50;
   height: 3px;
   background: linear-gradient(90deg, var(--accent), rgba(232, 115, 74, 0.3));
-  z-index: 12;
-  opacity: 0.5;
 }
 
 :global([data-theme="light"]) .card__front::before,
 :global([data-theme="light"]) .card__back::before {
-  opacity: 0.9;
+  @apply opacity-90;
   background: linear-gradient(90deg, var(--accent), rgba(232, 115, 74, 0.5));
 }
 
 /* Pointer events for flip */
 .card__back {
-  pointer-events: none;
+  @apply pointer-events-none;
 }
 
 .card:hover .card__front {
-  pointer-events: none;
+  @apply pointer-events-none;
 }
 
 .card:hover .card__back {
-  pointer-events: auto;
+  @apply pointer-events-auto;
 }
 
 /* ═══════════════════════════════════════
@@ -127,13 +122,12 @@
 /* Warm radial glow for dark gradient fronts */
 .card__front::after {
   content: "";
-  @apply absolute pointer-events-none;
+  @apply absolute pointer-events-none z-0;
   top: -20%;
   left: -20%;
   width: 80%;
   height: 80%;
   background: radial-gradient(ellipse, rgba(232, 115, 74, 0.06) 0%, transparent 70%);
-  z-index: 0;
 }
 
 :global([data-theme="light"]) .card__front::after {
@@ -144,14 +138,13 @@
 /* ── Browser image wrap ── */
 
 .card__front-image-wrap {
-  @apply absolute overflow-hidden rounded-lg flex flex-col;
+  @apply absolute overflow-hidden rounded-lg flex flex-col z-11;
   top: 18px;
   left: 18px;
   right: 18px;
   bottom: 22%;
   border: 1px solid var(--border-subtle);
   background: var(--bg-tertiary);
-  z-index: 11;
 }
 
 .card__front-browser-bar {
@@ -162,11 +155,10 @@
 }
 
 .card__front-browser-url {
-  @apply flex-1 text-center truncate;
+  @apply flex-1 text-center truncate opacity-60;
   font-family: var(--font-mono);
   font-size: 8px;
   color: var(--text-tertiary);
-  opacity: 0.6;
 }
 
 .card__front-image-inner {
@@ -180,9 +172,8 @@
 /* ── Gradient overlay for non-image cards ── */
 
 .card__front-overlay {
-  @apply absolute inset-0 pointer-events-none;
+  @apply absolute inset-0 pointer-events-none z-1;
   background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.55) 100%);
-  z-index: 1;
 }
 
 :global([data-theme="light"]) .card__front-overlay {
@@ -192,17 +183,15 @@
 /* ── Front content ── */
 
 .card__front-content {
-  @apply relative;
-  z-index: 2;
+  @apply relative z-2;
 }
 
 .card__front-name {
-  @apply font-bold uppercase;
+  @apply font-bold uppercase whitespace-pre-line;
   color: var(--text-primary);
   font-family: var(--font-display);
   font-size: 28px;
   line-height: 1.1;
-  white-space: pre-line;
 }
 
 :global([data-theme="light"]) .card__front-name {
@@ -238,13 +227,12 @@
 /* Accent radial glow — top right */
 .card__back::after {
   content: "";
-  @apply absolute pointer-events-none;
+  @apply absolute pointer-events-none z-0;
   top: -10%;
   right: -10%;
   width: 60%;
   height: 60%;
   background: radial-gradient(ellipse, rgba(232, 115, 74, 0.07) 0%, transparent 70%);
-  z-index: 0;
 }
 
 :global([data-theme="light"]) .card__back::after {
@@ -254,61 +242,53 @@
 /* ── Back content ── */
 
 .card__back-label {
-  @apply relative uppercase;
+  @apply relative uppercase z-1;
   color: var(--accent);
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 2px;
-  z-index: 1;
 }
 
 .card__back-divider {
-  @apply relative mt-3;
+  @apply relative mt-3 z-1;
   height: 1px;
   width: 48px;
   background: linear-gradient(90deg, var(--accent), transparent);
-  z-index: 1;
 }
 
 .card__back-name {
-  @apply relative mt-3 font-bold uppercase;
+  @apply relative mt-3 font-bold uppercase z-1;
   color: var(--text-primary);
   font-family: var(--font-display);
   font-size: 20px;
-  z-index: 1;
 }
 
 .card__back-headline {
-  @apply relative mt-1;
+  @apply relative mt-1 z-1;
   color: var(--accent);
   font-family: var(--font-mono);
   font-size: 12px;
   letter-spacing: 0.5px;
-  z-index: 1;
 }
 
 .card__back-description {
-  @apply relative mt-4 font-light;
+  @apply relative mt-4 font-light z-1;
   color: var(--text-secondary);
   font-family: var(--font-mono);
   font-size: 13px;
   line-height: 1.7;
-  z-index: 1;
 }
 
 .card__back-tech {
-  @apply relative flex flex-wrap gap-1.5 mt-auto pt-6;
-  z-index: 1;
+  @apply relative flex flex-wrap gap-1.5 mt-auto pt-6 z-1;
 }
 
 .card__back-cta {
-  @apply relative mt-5;
-  pointer-events: auto;
-  z-index: 2;
+  @apply relative mt-5 pointer-events-auto z-2;
 }
 
 .card__back-cta * {
-  pointer-events: none;
+  @apply pointer-events-none;
 }
 
 /* ── Mobile: stacked layout, no flip ── */
@@ -321,12 +301,11 @@
   }
 
   .card:hover {
-    transform: none;
+    @apply transform-none;
   }
 
   .card__inner {
-    @apply static overflow-hidden;
-    border-radius: 16px;
+    @apply static overflow-hidden rounded-2xl;
     border: 1px solid var(--border-subtle);
     background: var(--bg-secondary);
     transform-style: flat;
@@ -334,20 +313,17 @@
   }
 
   .card__inner::after {
-    display: none;
+    @apply hidden;
   }
 
   .card:hover .card__inner {
-    transform: none;
+    @apply transform-none;
   }
 
   .card__front,
   .card__back {
-    @apply static;
+    @apply static rounded-none border-none shadow-none;
     backface-visibility: visible;
-    border-radius: 0;
-    box-shadow: none;
-    border: none;
   }
 
   /* Screenshot area — 1:1 aspect ratio */
@@ -359,84 +335,73 @@
   }
 
   .card__front::before {
-    display: none;
+    @apply hidden;
   }
 
   .card__front-content {
-    display: none;
+    @apply hidden;
   }
 
   .card__front-overlay {
-    display: none;
+    @apply hidden;
   }
 
   .card__front-image-wrap {
-    @apply absolute inset-0 rounded-none;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border: none;
+    @apply absolute inset-0 rounded-none border-none;
     border-radius: 16px 16px 0 0;
   }
 
   /* Content area */
   .card__back {
-    @apply relative;
+    @apply relative pointer-events-auto p-5;
     transform: none;
     border-radius: 0 0 16px 16px;
     border-top: none;
-    pointer-events: auto;
-    padding: 20px;
   }
 
   .card__back::before {
-    display: none;
+    @apply hidden;
   }
 
   .card__back::after {
-    display: none;
+    @apply hidden;
   }
 
   .card__back-label {
-    display: none;
+    @apply hidden;
   }
 
   .card__back-divider {
-    display: none;
+    @apply hidden;
   }
 
   .card__back-top {
-    @apply flex flex-col;
-    gap: 4px;
+    @apply flex flex-col gap-1;
   }
 
   .card__back-name {
-    margin-top: 0;
+    @apply mt-0;
     font-size: 18px;
   }
 
   .card__back-headline {
-    margin-top: 0;
+    @apply mt-0;
   }
 
   .card__back-description {
-    display: none;
+    @apply hidden;
   }
 
   .card__back-bottom {
-    @apply flex flex-col;
-    gap: 12px;
-    margin-top: 12px;
+    @apply flex flex-col gap-3 mt-3;
   }
 
   .card__back-tech {
-    margin-top: 0;
-    padding-top: 0;
+    @apply mt-0 pt-0;
   }
 
 
   .card__back-cta {
-    display: none !important;
+    @apply hidden;
   }
 }

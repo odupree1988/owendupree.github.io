@@ -53,23 +53,19 @@
   }
 
   html {
+    @apply scroll-smooth;
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    scroll-behavior: smooth;
   }
 
 
   body {
+    @apply flex flex-col min-h-dvh antialiased;
     font-family: var(--font-body);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    display: flex;
-    flex-direction: column;
-    min-height: 100dvh;
   }
 
   main {
-    flex: 1;
+    @apply flex-1;
   }
 
   h1, h2, h3, h4, h5, h6 {

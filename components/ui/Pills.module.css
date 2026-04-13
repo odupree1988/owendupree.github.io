@@ -4,11 +4,10 @@
    ═══════════════════════════════════════ */
 
 .pill {
-  @apply inline-flex items-center;
+  @apply inline-flex items-center rounded-2xl;
   font-family: var(--font-mono);
   font-size: 11px;
   padding: 5px 12px;
-  border-radius: 16px;
   /* Dark mode */
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);

@@ -24,8 +24,7 @@
 }
 
 .footer__social svg {
-  width: 18px;
-  height: 18px;
+  @apply w-4.5 h-4.5;
 }
 
 @media (min-width: 768px) {

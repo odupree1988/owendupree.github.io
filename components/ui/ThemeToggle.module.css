@@ -1,13 +1,8 @@
 @reference "../../app/globals.css";
 
 .track {
-  @apply relative flex items-center cursor-pointer;
-  width: 44px;
-  height: 24px;
-  border-radius: 12px;
+  @apply relative flex items-center cursor-pointer w-11 h-6 rounded-xl p-0 border border-(--border-subtle);
   background: #2e2e33;
-  border: 1px solid var(--border-subtle);
-  padding: 0;
   transition: background 0.3s, border-color 0.3s;
 }
 
@@ -20,11 +15,7 @@
 }
 
 .thumb {
-  @apply absolute flex items-center justify-center;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  left: 2px;
+  @apply absolute flex items-center justify-center w-4.5 h-4.5 rounded-full left-0.5;
   background: #1a1a1e;
   color: #ececee;
   transition: left 0.3s ease, background 0.3s, color 0.3s;
@@ -37,23 +28,23 @@
 }
 
 .thumb svg {
+  @apply absolute;
   width: 11px;
   height: 11px;
-  position: absolute;
 }
 
 .icon-moon {
-  display: block;
+  @apply block;
 }
 
 .icon-sun {
-  display: none;
+  @apply hidden;
 }
 
 :global([data-theme="light"]) .icon-moon {
-  display: none;
+  @apply hidden;
 }
 
 :global([data-theme="light"]) .icon-sun {
-  display: block;
+  @apply block;
 }

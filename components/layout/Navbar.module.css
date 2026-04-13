@@ -4,11 +4,7 @@
    ═══════════════════════════════════════ */
 
 .navbar {
-  @apply fixed top-0 left-0 right-0 flex items-center justify-between;
-  z-index: 60;
-  padding: 28px 48px;
-  background: transparent;
-  border-bottom: 1px solid transparent;
+  @apply fixed top-0 left-0 right-0 flex items-center justify-between z-60 py-7 px-12 bg-transparent border-b border-transparent;
   transition: background 0.3s, border-color 0.3s;
 }
 
@@ -78,7 +74,7 @@
 }
 
 .navbar__divider {
-  width: 1px;
+  @apply w-px;
   height: 22px;
   background: rgba(255, 255, 255, 0.15);
 }
@@ -90,8 +86,7 @@
 /* ── Mobile Toggle ── */
 
 .navbar__toggle {
-  @apply relative flex items-center justify-center w-10 h-10;
-  z-index: 60;
+  @apply relative flex items-center justify-center w-10 h-10 z-60;
 }
 
 .navbar__toggle-bars {
@@ -119,8 +114,7 @@
 /* ── Mobile Overlay ── */
 
 .navbar__overlay {
-  @apply fixed inset-0 flex flex-col items-center justify-center transition-all duration-500;
-  z-index: 55;
+  @apply fixed inset-0 flex flex-col items-center justify-center transition-all duration-500 z-55;
   background: var(--bg-primary);
 }
 

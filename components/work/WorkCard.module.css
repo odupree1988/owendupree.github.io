@@ -42,11 +42,10 @@
 }
 
 .work-card__browser-url {
-  @apply flex-1 text-center truncate;
+  @apply flex-1 text-center truncate opacity-60;
   font-family: var(--font-mono);
   font-size: 9px;
   color: var(--text-tertiary);
-  opacity: 0.6;
 }
 
 .work-card__browser-body {
@@ -77,12 +76,11 @@
 }
 
 .work-card__wip {
-  @apply shrink-0 uppercase self-start;
+  @apply shrink-0 uppercase self-start rounded;
   font-family: var(--font-mono);
   font-size: 9px;
   letter-spacing: 1.5px;
   padding: 3px 8px;
-  border-radius: 4px;
   background: rgba(232, 115, 74, 0.12);
   color: var(--accent);
   border: 1px solid rgba(232, 115, 74, 0.2);
@@ -110,24 +108,22 @@
   }
 
   .work-card__browser {
-    @apply inset-0 rounded-none;
-    border: none;
+    @apply inset-0 rounded-none border-none;
     border-radius: 12px 12px 0 0;
   }
 
   .work-card__browser-bar {
-    display: none;
+    @apply hidden;
   }
 
   .work-card__description {
-    display: none;
+    @apply hidden;
   }
 
 
 
   .work-card__body {
-    padding: 16px;
-    gap: 8px;
+    @apply p-4 gap-2;
   }
 }
 
