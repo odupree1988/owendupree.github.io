@@ -4,7 +4,8 @@
    ═══════════════════════════════════════ */
 
 .hero {
-  @apply relative min-h-screen overflow-hidden;
+  @apply relative min-h-screen overflow-hidden flex items-center;
+  padding: 120px 0 60px;
   background: var(--bg-primary);
   font-family: var(--font-mono);
 }
@@ -111,11 +112,8 @@
    ═══════════════════════════════════════ */
 
 .hero__editor-stack {
-  @apply absolute pointer-events-auto;
-  top: 120px;
-  right: -20px;
-  width: 52vw;
-  height: 550px;
+  @apply relative pointer-events-auto flex-1 min-w-0 self-center;
+  height: 440px;
   z-index: 0;
 }
 
@@ -553,10 +551,15 @@
 
 /* ── Content ── */
 
-.hero__content {
-  @apply relative z-2 mx-auto;
+.hero__inner {
+  @apply relative w-full mx-auto flex items-center;
   max-width: 1400px;
-  padding: 140px 100px 0;
+  padding: 0 100px;
+  gap: 120px;
+}
+
+.hero__content {
+  @apply relative z-2 shrink-0;
 }
 
 /* ── Label ── */
@@ -675,9 +678,8 @@
 /* ── Responsive ── */
 
 @media (max-width: 1024px) {
-  .hero__content {
+  .hero__inner {
     @apply px-12;
-    padding-top: 140px;
   }
 
 
@@ -700,9 +702,8 @@
     @apply hidden;
   }
 
-  .hero__content {
+  .hero__inner {
     @apply px-6;
-    padding-top: 120px;
   }
 
   .hero__name {

@@ -116,7 +116,7 @@
 .card__front {
   @apply flex flex-col justify-end p-7;
   background:
-    linear-gradient(160deg, #1e1e22 0%, #18181c 45%, #1c1c20 100%);
+    linear-gradient(160deg, #272729 0%, #232326 45%, #272729 100%);
 }
 
 :global([data-theme="light"]) .card__front {
@@ -225,7 +225,7 @@
   @apply flex flex-col justify-between p-8;
   transform: rotateY(180deg);
   background:
-    linear-gradient(160deg, #1e1e22 0%, #18181c 45%, #1c1c20 100%);
+    linear-gradient(160deg, #272729 0%, #232326 45%, #272729 100%);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 

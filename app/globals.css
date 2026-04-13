@@ -6,9 +6,9 @@
   :root {
     /* Backgrounds */
     --bg-primary: #060606;
-    --bg-secondary: #111113;
-    --bg-tertiary: #1c1c20;
-    --bg-hover: #242428;
+    --bg-secondary: #232326;
+    --bg-tertiary: #323236;
+    --bg-hover: #3c3c40;
 
     /* Text */
     --text-primary: #ececee;
@@ -25,11 +25,12 @@
     --border-subtle: rgba(255, 255, 255, 0.06);
     --border-hover: rgba(255, 255, 255, 0.12);
 
-    /* Font families — set by next/font CSS variables */
+    /* Font families — set by next/font CSS variables + @fontsource */
     --font-display: 'Space Grotesk', sans-serif;
     --font-heading: 'Outfit', sans-serif;
     --font-body: 'DM Sans', sans-serif;
     --font-mono: 'DM Mono', monospace;
+    --font-inter: 'Inter', sans-serif;
   }
 
   [data-theme="light"] {
@@ -62,6 +63,13 @@
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+  }
+
+  main {
+    flex: 1;
   }
 
   h1, h2, h3, h4, h5, h6 {

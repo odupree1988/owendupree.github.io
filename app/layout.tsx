@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Outfit, DM_Sans, Space_Grotesk, DM_Mono } from "next/font/google";
+import { Outfit, DM_Sans, DM_Mono } from "next/font/google";
+import "@fontsource/space-grotesk/400.css";
+import "@fontsource/space-grotesk/500.css";
+import "@fontsource/space-grotesk/700.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeToggleMobile } from "@/components/ui/ThemeToggleMobile";
@@ -17,13 +22,6 @@ const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500"],
   variable: "--font-body",
-  display: "swap",
-});
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-display",
   display: "swap",
 });
 
@@ -58,7 +56,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${outfit.variable} ${dmSans.variable} ${spaceGrotesk.variable} ${dmMono.variable}`}
+      className={`${outfit.variable} ${dmSans.variable} ${dmMono.variable}`}
     >
       <head>
         <script
