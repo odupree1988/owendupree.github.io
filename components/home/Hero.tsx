@@ -205,11 +205,11 @@ export function Hero() {
         {/* Description */}
         <motion.div {...reveal(0.75)}>
           <p className={styles.hero__description}>
-            I build thoughtful websites and digital experiences for brands that
-            want something polished, approachable, and built with care.
-            I&apos;m passionate about creating work that feels clean, works the
-            way it should, and comes together thoughtfully from the technical
-            foundation to the final user experience.
+            I build websites and digital experiences for brands that want
+            something polished, approachable, and built with care. I have a
+            passion for creating work that feels clean, works smoothly, and
+            comes together in a way that feels solid from the technical side
+            all the way through the user experience.
           </p>
 
           <div className={styles.hero__actions}>
