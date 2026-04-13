@@ -350,10 +350,11 @@
     border: none;
   }
 
-  /* Screenshot area */
+  /* Screenshot area — 1:1 aspect ratio */
   .card__front {
     @apply relative justify-end;
-    height: 180px;
+    aspect-ratio: 1 / 1;
+    height: auto;
     border-radius: 16px 16px 0 0;
   }
 
@@ -420,13 +421,7 @@
   }
 
   .card__back-description {
-    margin-top: 8px;
-    font-size: 12px;
-    line-height: 1.6;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    display: none;
   }
 
   .card__back-bottom {
@@ -440,12 +435,8 @@
     padding-top: 0;
   }
 
-  /* Cap at 4 pills */
-  .card__back-tech > :nth-child(n+5) {
-    display: none;
-  }
 
   .card__back-cta {
-    margin-top: 0;
+    display: none;
   }
 }

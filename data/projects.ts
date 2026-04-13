@@ -31,6 +31,7 @@ export const projects: Project[] = [
     gradient: "from-[#1a2e1a] to-[#0f3a1a]",
     image: "/screenshots/energybird.png",
     tech: ["Shopify", "Liquid", "Vue.js", "Tailwind CSS", "Shopify Functions"],
+    highlight: "Custom bundle builder",
   },
   {
     title: "Philosophy",
@@ -85,6 +86,7 @@ export const projects: Project[] = [
     gradient: "from-[#2a1a2a] to-[#4a1e42]",
     image: "/screenshots/natural-life.png",
     tech: ["Vue.js", "Shopify", "Liquid", "Tailwind CSS", "Shopify Functions", "Custom Apps"],
+    highlight: "Nosto powered PLP & PDP",
   },
   {
     title: "BizChair",

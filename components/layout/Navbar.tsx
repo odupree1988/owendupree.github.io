@@ -64,6 +64,9 @@ export function Navbar() {
             </Link>
           )
         )}
+        <Link href="/contact" className={styles["navbar__overlay-link"]}>
+          Let&apos;s Talk
+        </Link>
       </div>
 
       <nav className={cls(styles.navbar, scrolled && styles["navbar--scrolled"])}>

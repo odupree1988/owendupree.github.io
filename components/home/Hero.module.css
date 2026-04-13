@@ -650,6 +650,25 @@
   background: var(--border-hover);
 }
 
+/* ── Social icons (mobile only) ── */
+
+.hero__socials {
+  @apply hidden items-center gap-5 pt-8;
+}
+
+.hero__social-link {
+  @apply flex items-center justify-center w-14 h-14 rounded-xl border border-(--border-subtle) bg-(--bg-secondary) text-(--text-secondary) transition-all duration-200;
+}
+
+.hero__social-link:hover {
+  @apply -translate-y-0.5 border-(--border-hover) text-(--accent);
+}
+
+.hero__social-link svg {
+  width: 20px;
+  height: 20px;
+}
+
 
 
 
@@ -689,6 +708,10 @@
   .hero__name {
     @apply mt-5;
     letter-spacing: -1.5px;
+  }
+
+  .hero__socials {
+    @apply flex;
   }
 
   .hero__divider {

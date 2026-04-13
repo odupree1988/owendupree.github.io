@@ -22,7 +22,7 @@ const PROJECTS: FlipProject[] = [
     name: "EnergyBird",
     description:
       "Custom Shopify theme for a supplements brand. Performance-focused build with dynamic product merchandising and custom API integrations.",
-    headline: "Performance-focused storefront",
+    headline: "Custom bundle builder",
     tech: ["Shopify", "Liquid", "Vue.js", "Tailwind CSS", "Shopify Functions"],
     url: "https://energybird.com/",
     gradient: ["#1a2e1a", "#0f3a1a"],

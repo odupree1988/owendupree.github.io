@@ -4,7 +4,7 @@
    ═══════════════════════════════════════ */
 
 .home-cta {
-  @apply px-6;
+  @apply px-12;
   padding-top: 80px;
   padding-bottom: 80px;
   background: var(--bg-secondary);
@@ -30,6 +30,7 @@
 
 @media (max-width: 767px) {
   .home-cta {
+    @apply px-6;
     padding-top: 40px;
     padding-bottom: 40px;
   }

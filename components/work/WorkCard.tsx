@@ -46,19 +46,17 @@ export function WorkCard({ project, index }: WorkCardProps) {
       </div>
 
       <div className={styles["work-card__body"]}>
-        <div className={styles["work-card__title-row"]}>
-          <h3 className={styles["work-card__title"]}>{project.title}</h3>
-          {project.wip && <span className={styles["work-card__wip"]}>WIP</span>}
-        </div>
+        <h3 className={styles["work-card__title"]}>{project.title}</h3>
+        {project.wip && <span className={styles["work-card__wip"]}>WIP</span>}
+        {project.highlight && (
+          <span className={styles["work-card__highlight"]}>{project.highlight}</span>
+        )}
         <p className={styles["work-card__description"]}>{project.description}</p>
         <div className={styles["work-card__tech"]}>
           {project.tech.map((t) => (
             <span key={t} className={pillStyles.pill}>{t}</span>
           ))}
         </div>
-        {project.highlight && (
-          <span className={styles["work-card__highlight"]}>{project.highlight}</span>
-        )}
       </div>
     </div>
   );
