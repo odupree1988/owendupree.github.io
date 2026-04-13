@@ -1,36 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useSyncExternalStore } from "react";
 import styles from "./ThemeToggleMobile.module.css";
 
+function getTheme(): "dark" | "light" {
+  return (document.documentElement.getAttribute("data-theme") as "dark" | "light") ?? "dark";
+}
+
 export function ThemeToggleMobile() {
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    const stored = localStorage.getItem("theme") as "dark" | "light" | null;
-    if (stored) {
-      setTheme(stored);
-      document.documentElement.setAttribute("data-theme", stored);
-    }
-    setMounted(true);
-
-    const observer = new MutationObserver(() => {
-      const current = document.documentElement.getAttribute("data-theme") as "dark" | "light" | null;
-      if (current && current !== theme) setTheme(current);
-    });
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-    return () => observer.disconnect();
-  }, [theme]);
+  const theme = useSyncExternalStore(
+    useCallback((cb: () => void) => {
+      const obs = new MutationObserver(cb);
+      obs.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+      return () => obs.disconnect();
+    }, []),
+    getTheme,
+    () => "dark" as const,
+  );
 
   function toggle() {
     const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
     document.documentElement.setAttribute("data-theme", next);
     localStorage.setItem("theme", next);
   }
-
-  if (!mounted) return null;
 
   const isLight = theme === "light";
 
