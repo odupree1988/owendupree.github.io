@@ -89,7 +89,7 @@ export function Hero() {
               </Link>
               <div className={styles["hero__actions-divider"]} />
               <Link href="/contact" className={linkStyles["link-secondary"]}>
-                <span>Contact me</span>
+                <span className={linkStyles["link-secondary__label"]}>Contact me</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14" />
                   <path d="M12 5l7 7-7 7" />

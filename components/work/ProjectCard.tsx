@@ -92,7 +92,7 @@ export function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
                 <span key={t} className={pillStyles.pill}>{t}</span>
               ))}
             </div>
-            <span className={`${linkStyles["link-primary"]} ${styles["card__back-cta"]}`}>
+            <span className={`${linkStyles["link-primary"]} ${styles["card__back-cta"]} hidden sm:inline-flex`}>
               <span className={linkStyles["link-primary__btn"]}>
                 <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M7 17L17 7" />

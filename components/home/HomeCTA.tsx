@@ -11,14 +11,12 @@ export function HomeCTA() {
         <h2 className={styles["home-cta__title"]}>{siteConfig.contactHeading}</h2>
         <p className={styles["home-cta__subtitle"]}>{siteConfig.contactSubtext}</p>
         <div className={styles["home-cta__actions"]}>
-          <Link href="/contact" className={linkStyles["link-primary"]}>
-            <span className={linkStyles["link-primary__btn"]}>
-              <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M7 17L17 7" />
-                <path d="M7 7h10v10" />
+          <Link href="/contact" className={linkStyles["link-secondary"]}>
+            <span className={linkStyles["link-secondary__label"]}>Get in touch</span>
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M5 12h14" />
+                <path d="M12 5l7 7-7 7" />
               </svg>
-            </span>
-            <span className={linkStyles["link-primary__label"]}>Get in touch</span>
           </Link>
         </div>
       </ScrollReveal>
