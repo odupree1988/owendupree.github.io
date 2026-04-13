@@ -3,6 +3,9 @@
 import { useEffect, useRef } from "react";
 import Link from "next/link";
 import styles from "./Hero.module.css";
+import linkStyles from "@/components/ui/LinkStyles.module.css";
+import anim from "@/components/ui/Animations.module.css";
+import chromeStyles from "@/components/ui/BrowserChrome.module.css";
 
 function cls(...names: string[]) {
   return names.join(" ");
@@ -16,7 +19,7 @@ export function Hero() {
     if (!section) return;
 
     const animated = section.querySelectorAll(
-      `.${styles["hero__animate-in"]}, .${styles.hero__divider}`
+      `.${anim["fade-in"]}, .${styles.hero__divider}`
     );
 
     const observer = new IntersectionObserver(
@@ -27,7 +30,7 @@ export function Hero() {
             if (el.classList.contains(styles.hero__divider)) {
               el.classList.add(styles["hero__divider--visible"]);
             } else {
-              el.classList.add(styles["hero__animate-in--visible"]);
+              el.classList.add(anim["fade-in--visible"]);
             }
           }
         });
@@ -52,22 +55,34 @@ export function Hero() {
         {/* Deepest card */}
         <div className={styles["hero__card-back-2"]}>
           <div className={styles["hero__card-chrome"]}>
-            <div className={styles["hero__card-chrome-dots"]}><span /><span /><span /></div>
+            <div className={`${chromeStyles.dots} ${chromeStyles["dots--md"]}`}><span /><span /><span /></div>
           </div>
           <div className={styles["hero__card-tab-peek"]}>Hero.tsx</div>
           <div className={styles["hero__card-statusbar"]}>
-            <span className={styles["hero__card-statusbar-text"]}>BUILDING SOMETHING NEW</span>
+            <span className={styles["hero__card-statusbar-left"]}>
+              <svg viewBox="0 0 16 16" width="9" height="9" fill="currentColor">
+                <path d="M11.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122V6.5a2.5 2.5 0 01-2.5 2.5H7.5a1 1 0 00-1 1v1.128a2.251 2.251 0 11-1.5 0V5.372a2.25 2.25 0 111.5 0v1.836A2.492 2.492 0 017.5 7h2.5a1 1 0 001-1v-1.128A2.251 2.251 0 019.5 3.25zM4.25 12a.75.75 0 100 1.5.75.75 0 000-1.5zM3.5 3.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0z" />
+              </svg>
+              main &nbsp; 0 problems
+            </span>
+            <span className={styles["hero__card-statusbar-right"]}>Ln 1, Col 1 &nbsp; UTF-8 &nbsp; TypeScript React &nbsp; Prettier</span>
           </div>
         </div>
 
         {/* Middle card */}
         <div className={styles["hero__card-back"]}>
           <div className={styles["hero__card-chrome"]}>
-            <div className={styles["hero__card-chrome-dots"]}><span /><span /><span /></div>
+            <div className={`${chromeStyles.dots} ${chromeStyles["dots--md"]}`}><span /><span /><span /></div>
           </div>
           <div className={styles["hero__card-tab-peek"]}>useCart.ts</div>
           <div className={styles["hero__card-statusbar"]}>
-            <span className={styles["hero__card-statusbar-text"]}>CURRENTLY BUILDING SOMETHING NEW</span>
+            <span className={styles["hero__card-statusbar-left"]}>
+              <svg viewBox="0 0 16 16" width="9" height="9" fill="currentColor">
+                <path d="M11.75 2.5a.75.75 0 100 1.5.75.75 0 000-1.5zm-2.25.75a2.25 2.25 0 113 2.122V6.5a2.5 2.5 0 01-2.5 2.5H7.5a1 1 0 00-1 1v1.128a2.251 2.251 0 11-1.5 0V5.372a2.25 2.25 0 111.5 0v1.836A2.492 2.492 0 017.5 7h2.5a1 1 0 001-1v-1.128A2.251 2.251 0 019.5 3.25zM4.25 12a.75.75 0 100 1.5.75.75 0 000-1.5zM3.5 3.25a.75.75 0 111.5 0 .75.75 0 01-1.5 0z" />
+              </svg>
+              main &nbsp; 0 problems
+            </span>
+            <span className={styles["hero__card-statusbar-right"]}>Ln 12, Col 8 &nbsp; UTF-8 &nbsp; TypeScript &nbsp; Prettier</span>
           </div>
         </div>
 
@@ -75,7 +90,7 @@ export function Hero() {
         <div className={styles.hero__editor}>
           {/* Title bar */}
           <div className={styles["hero__editor-titlebar"]}>
-            <div className={styles["hero__editor-dots"]}>
+            <div className={`${chromeStyles.dots} ${chromeStyles["dots--lg"]}`}>
               <span /><span /><span />
             </div>
             <span className={styles["hero__editor-title"]}>Hero.tsx — owen-portfolio</span>
@@ -185,7 +200,7 @@ export function Hero() {
       <div className={styles.hero__content}>
         {/* Label + Location */}
         <div
-          className={cls(styles.hero__label, styles["hero__animate-in"])}
+          className={cls(styles.hero__label, anim["fade-in"])}
           style={{ transitionDelay: "0.2s" }}
         >
           <div className={styles["hero__label-line"]} />
@@ -203,13 +218,13 @@ export function Hero() {
         {/* Name */}
         <h1 className={styles.hero__name}>
           <span
-            className={cls(styles["hero__name-first"], styles["hero__animate-in"])}
+            className={cls(styles["hero__name-first"], anim["fade-in"])}
             style={{ transitionDelay: "0.35s" }}
           >
             OWEN
           </span>
           <span
-            className={cls(styles["hero__name-last"], styles["hero__animate-in"])}
+            className={cls(styles["hero__name-last"], anim["fade-in"])}
             style={{ transitionDelay: "0.5s" }}
           >
             DUPREE
@@ -221,7 +236,7 @@ export function Hero() {
 
         {/* Description */}
         <div
-          className={cls(styles["hero__animate-in"])}
+          className={cls(anim["fade-in"])}
           style={{ transitionDelay: "0.75s" }}
         >
           <p className={styles.hero__description}>
@@ -232,22 +247,17 @@ export function Hero() {
 
           <div className={styles.hero__actions}>
             <div className={styles["hero__actions-inner"]}>
-              <Link href="/work" className={styles["hero__cta-group"]}>
-                <span className={styles["hero__cta-button"]}>
-                  <svg
-                    viewBox="0 0 24 24"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
+              <Link href="/work" className={linkStyles["link-primary"]}>
+                <span className={linkStyles["link-primary__btn"]}>
+                  <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M7 17L17 7" />
                     <path d="M7 7h10v10" />
                   </svg>
                 </span>
-                <span className={styles["hero__cta-label"]}>View work</span>
+                <span className={linkStyles["link-primary__label"]}>View work</span>
               </Link>
               <div className={styles["hero__actions-divider"]} />
-              <Link href="/contact" className={styles["hero__cta-secondary"]}>
+              <Link href="/contact" className={linkStyles["link-secondary"]}>
                 <span>Contact me</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M5 12h14" />

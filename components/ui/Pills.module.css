@@ -1,0 +1,25 @@
+@reference "../../app/globals.css";
+/* ═══════════════════════════════════════
+   Reusable Pill / Tag Styles
+   ═══════════════════════════════════════ */
+
+.pill {
+  @apply inline-flex items-center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 5px 12px;
+  border-radius: 16px;
+  /* Dark mode: frosted glass */
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+}
+
+:global([data-theme="light"]) .pill {
+  /* Light mode: coral-tinted */
+  background: rgba(232, 115, 74, 0.06);
+  border-color: rgba(232, 115, 74, 0.15);
+  color: var(--text-secondary);
+  backdrop-filter: none;
+}

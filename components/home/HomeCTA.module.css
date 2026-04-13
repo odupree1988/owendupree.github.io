@@ -25,9 +25,6 @@
   @apply mt-8 flex justify-center gap-6;
 }
 
-.home-cta__link {
-  @apply text-sm font-medium no-underline transition-colors text-(--accent) hover:underline;
-}
 
 @media (min-width: 768px) {
   .home-cta__title {

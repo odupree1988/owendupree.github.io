@@ -64,19 +64,25 @@
   padding: 14px 24px;
   border-radius: 12px;
   border: 1px solid var(--border-subtle);
-  background: var(--bg-primary);
+  background: #2e2e33;
+  cursor: grab;
   transition: border-color 0.3s, transform 0.3s;
+}
+
+:global([data-theme="light"]) .skills__item {
+  background: var(--bg-primary);
 }
 
 .skills__item:hover {
   border-color: var(--border-hover);
-  transform: translateY(-2px);
 }
 
 .skills__item-img {
   @apply shrink-0 rounded-md object-contain;
   width: 32px;
   height: 32px;
+  padding: 3px;
+  background: #fff;
 }
 
 /* Placeholder for missing icons */

@@ -16,6 +16,8 @@ const ROW_1: Skill[] = [
   { name: "Vue.js", icon: "/logos/Vue.js_Logo_2.svg.png" },
   { name: "Hydrogen", icon: "/logos/hydrogen-logo.webp" },
   { name: "Node.js", icon: "/logos/node-js-logo.png" },
+  { name: "Astro", icon: "/logos/astro-logo.png" },
+  { name: "GitHub", icon: "/logos/Octicons-mark-github.svg" },
 ];
 
 const ROW_2: Skill[] = [
@@ -27,6 +29,9 @@ const ROW_2: Skill[] = [
   { name: "HTML", icon: "/logos/HTML-logo.png" },
   { name: "Contentful", icon: "/logos/Contentful-logo.png" },
   { name: "Git", icon: "/logos/git-icon-logo.svg" },
+  { name: "Remix", icon: "/logos/remix-logo.png" },
+  { name: "Buddy", icon: "/logos/buddy-logo.png" },
+  { name: "Atlassian", icon: "/logos/Atlassian-Logo.jpg" },
 ];
 
 function MarqueeRow({

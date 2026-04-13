@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import type { Project } from "@/data/projects";
 import styles from "./WorkCard.module.css";
+import chromeStyles from "@/components/ui/BrowserChrome.module.css";
 
 interface WorkCardProps {
   project: Project;
@@ -15,13 +16,25 @@ export function WorkCard({ project, index }: WorkCardProps) {
     <div className={styles["work-card"]}>
       <div className={styles["work-card__visual"]}>
         {project.image ? (
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className={styles["work-card__image"]}
-            sizes="(min-width: 768px) 55vw, 100vw"
-          />
+          <div className={styles["work-card__browser"]}>
+            <div className={styles["work-card__browser-bar"]}>
+              <span className={`${chromeStyles.dots} ${chromeStyles["dots--sm"]}`}>
+                <span /><span /><span />
+              </span>
+              <span className={styles["work-card__browser-url"]}>
+                {project.link.replace(/^https?:\/\//, "")}
+              </span>
+            </div>
+            <div className={styles["work-card__browser-body"]}>
+              <Image
+                src={project.image}
+                alt={project.title}
+                fill
+                className={styles["work-card__image"]}
+                sizes="(min-width: 768px) 55vw, 100vw"
+              />
+            </div>
+          </div>
         ) : (
           <div
             className={`${styles["work-card__gradient"]} bg-gradient-to-br ${project.gradient}`}
@@ -32,7 +45,10 @@ export function WorkCard({ project, index }: WorkCardProps) {
       </div>
 
       <div className={styles["work-card__body"]}>
-        <h3 className={styles["work-card__title"]}>{project.title}</h3>
+        <div className={styles["work-card__title-row"]}>
+          <h3 className={styles["work-card__title"]}>{project.title}</h3>
+          {project.wip && <span className={styles["work-card__wip"]}>WIP</span>}
+        </div>
         <p className={styles["work-card__description"]}>{project.description}</p>
         <div className={styles["work-card__tech"]}>
           {project.tech.map((t) => (

@@ -1,0 +1,20 @@
+@reference "../../app/globals.css";
+/* ═══════════════════════════════════════
+   Reusable Section Labels / Headers
+   ═══════════════════════════════════════ */
+
+/* Small uppercase accent label */
+.label {
+  @apply uppercase text-(--accent);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 3px;
+}
+
+/* Section heading */
+.heading {
+  @apply text-center uppercase text-(--accent);
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 3px;
+}

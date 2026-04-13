@@ -1,0 +1,45 @@
+@reference "../../app/globals.css";
+/* ═══════════════════════════════════════
+   Reusable Browser Chrome (traffic lights)
+   ═══════════════════════════════════════ */
+
+.dots {
+  @apply flex items-center;
+  gap: 5px;
+}
+
+.dots span {
+  @apply block rounded-full;
+}
+
+.dots span:nth-child(1) { background: #ff5f57; }
+.dots span:nth-child(2) { background: #febc2e; }
+.dots span:nth-child(3) { background: #28c840; }
+
+/* ── Size variants ── */
+
+.dots--sm span {
+  width: 6px;
+  height: 6px;
+  opacity: 0.6;
+}
+
+.dots--md span {
+  width: 7px;
+  height: 7px;
+  opacity: 0.5;
+}
+
+:global([data-theme="light"]) .dots--md span {
+  opacity: 0.65;
+}
+
+.dots--lg span {
+  width: 10px;
+  height: 10px;
+  opacity: 0.75;
+}
+
+:global([data-theme="light"]) .dots--lg span {
+  opacity: 0.9;
+}
