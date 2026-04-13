@@ -437,6 +437,6 @@
 
 
   .card__back-cta {
-    display: none;
+    display: none !important;
   }
 }
