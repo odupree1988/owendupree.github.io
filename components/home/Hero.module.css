@@ -105,36 +105,6 @@
   100% { top: 48px; opacity: 0; }
 }
 
-/* ── Decorative Rects ── */
-
-.hero__deco {
-  @apply absolute pointer-events-none;
-  top: 100px;
-  right: -60px;
-  transition: top 0.5s ease, right 0.5s ease;
-}
-
-.hero__deco-rect--filled {
-  @apply absolute top-0 right-0 rounded-lg opacity-35 -rotate-6;
-  width: 250px;
-  height: 350px;
-  background: linear-gradient(135deg, var(--border-subtle), transparent);
-  transition: width 0.5s ease, height 0.5s ease, opacity 0.5s ease, border-radius 0.5s ease, transform 0.5s ease, background 0.5s ease, box-shadow 0.5s ease;
-}
-
-.hero__deco-rect--outlined {
-  @apply absolute rounded-lg opacity-30 top-5 -rotate-3 border;
-  right: 30px;
-  width: 250px;
-  height: 350px;
-  border-color: rgba(232, 115, 74, 0.15);
-  transition: width 0.5s ease, height 0.5s ease, opacity 0.5s ease, border-radius 0.5s ease, transform 0.5s ease, right 0.5s ease;
-}
-
-/* Light mode: large displaced card panel on right half */
-:global([data-theme="light"]) .hero__deco {
-  @apply hidden;
-}
 
 /* ═══════════════════════════════════════
    Editor Card Stack
@@ -142,10 +112,10 @@
 
 .hero__editor-stack {
   @apply absolute pointer-events-auto;
-  top: 80px;
+  top: 120px;
   right: -20px;
   width: 52vw;
-  height: 616px;
+  height: 550px;
   z-index: 0;
 }
 
@@ -321,18 +291,42 @@
   font-size: 11px;
   color: var(--text-tertiary);
   border-right: 1px solid rgba(255, 255, 255, 0.04);
-  opacity: 0.4;
+  opacity: 0.6;
   position: relative;
 }
 
 :global([data-theme="light"]) .hero__editor-tab {
   border-right-color: rgba(0, 0, 0, 0.05);
+  color: var(--text-secondary);
+  opacity: 0.7;
 }
 
 .hero__editor-tab-icon {
-  font-size: 9px;
-  opacity: 0.5;
-  color: var(--accent);
+  @apply inline-flex items-center justify-center shrink-0 rounded-sm font-bold;
+  width: 16px;
+  height: 16px;
+  font-size: 7px;
+  font-family: var(--font-mono);
+  letter-spacing: -0.5px;
+  color: #fff;
+}
+
+.hero__editor-tab-icon--ts {
+  background: #3178c6;
+}
+
+.hero__editor-tab-icon--js {
+  background: #f0db4f;
+  color: #323330;
+}
+
+.hero__editor-tab-icon--css {
+  background: #663399;
+}
+
+.hero__editor-tab-icon--json {
+  background: #f5a623;
+  color: #333;
 }
 
 .hero__editor-tab--active {
@@ -625,14 +619,9 @@
 /* ── Divider ── */
 
 .hero__divider {
-  @apply my-10 h-px origin-left scale-x-0;
+  @apply my-10 h-px origin-left;
   max-width: 500px;
   background: var(--border-subtle);
-  transition: transform 0.8s ease-out;
-}
-
-.hero__divider--visible {
-  @apply scale-x-100;
 }
 
 /* ── Description ── */
@@ -649,7 +638,7 @@
 /* ── Actions ── */
 
 .hero__actions {
-  @apply flex items-start pt-6;
+  @apply flex items-start md:pt-6 pt-8;
 }
 
 .hero__actions-inner {
@@ -677,9 +666,6 @@
     @apply hidden;
   }
 
-  .hero__deco {
-    @apply hidden;
-  }
 
   .hero__editor-stack {
     @apply hidden;
@@ -697,11 +683,21 @@
 
   .hero__content {
     @apply px-6;
-    padding-top: 120px;
+    padding-top: 100px;
   }
 
   .hero__name {
+    @apply mt-3;
     letter-spacing: -1.5px;
+  }
+
+  .hero__divider {
+    @apply my-5;
+  }
+
+  .hero__description {
+    font-size: 14px;
+    line-height: 1.7;
   }
 }
 

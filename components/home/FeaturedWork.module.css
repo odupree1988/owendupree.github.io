@@ -5,7 +5,7 @@
 
 .featured-work {
   background: var(--bg-primary);
-  padding: 120px 48px;
+  padding: 80px 48px;
 }
 
 .featured-work__header {
@@ -16,18 +16,22 @@
 }
 
 .featured-work__grid {
-  @apply mx-auto mt-12;
+  @apply mx-auto mt-14;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
   max-width: 1200px;
 }
 
+.featured-work__cta {
+  @apply flex justify-center mt-16;
+}
+
 @media (max-width: 1024px) {
   .featured-work {
     @apply px-6;
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 40px;
+    padding-bottom: 40px;
   }
 
   .featured-work__grid {

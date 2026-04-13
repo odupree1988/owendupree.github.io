@@ -24,14 +24,14 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  left: 22px;
+  left: 2px;
   background: #1a1a1e;
   color: #ececee;
   transition: left 0.3s ease, background 0.3s, color 0.3s;
 }
 
 .thumb--light {
-  left: 2px;
+  left: 22px;
   background: #ffffff;
   color: #1a1a1a;
 }

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import type { Project } from "@/data/projects";
 import styles from "./WorkCard.module.css";
 import chromeStyles from "@/components/ui/BrowserChrome.module.css";
+import pillStyles from "@/components/ui/Pills.module.css";
 
 interface WorkCardProps {
   project: Project;
@@ -52,7 +53,7 @@ export function WorkCard({ project, index }: WorkCardProps) {
         <p className={styles["work-card__description"]}>{project.description}</p>
         <div className={styles["work-card__tech"]}>
           {project.tech.map((t) => (
-            <span key={t} className={styles["work-card__tech-tag"]}>{t}</span>
+            <span key={t} className={pillStyles.pill}>{t}</span>
           ))}
         </div>
         {project.highlight && (

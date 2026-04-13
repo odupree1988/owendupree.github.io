@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import styles from "./ThemeToggleMobile.module.css";
 
 export function ThemeToggleMobile() {
-  const [theme, setTheme] = useState<"dark" | "light">("light");
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {

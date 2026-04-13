@@ -77,13 +77,16 @@ export function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
 
         {/* Back */}
         <div className={styles.card__back}>
-          <div>
+          <div className={styles["card__back-top"]}>
             <span className={styles["card__back-label"]}>About this project</span>
             <div className={styles["card__back-divider"]} />
             <h3 className={styles["card__back-name"]}>{project.name}</h3>
+            {project.headline && (
+              <p className={styles["card__back-headline"]}>{project.headline}</p>
+            )}
             <p className={styles["card__back-description"]}>{project.description}</p>
           </div>
-          <div>
+          <div className={styles["card__back-bottom"]}>
             <div className={styles["card__back-tech"]}>
               {project.tech.map((t) => (
                 <span key={t} className={pillStyles.pill}>{t}</span>

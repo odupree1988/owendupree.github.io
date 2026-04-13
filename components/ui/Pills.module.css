@@ -9,11 +9,10 @@
   font-size: 11px;
   padding: 5px 12px;
   border-radius: 16px;
-  /* Dark mode: frosted glass */
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(8px);
+  /* Dark mode */
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.75);
 }
 
 :global([data-theme="light"]) .pill {

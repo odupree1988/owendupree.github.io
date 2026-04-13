@@ -1,0 +1,49 @@
+@reference "../../app/globals.css";
+
+.resume {
+  @apply px-6;
+  padding-top: 160px;
+  padding-bottom: 80px;
+  background: var(--bg-primary);
+}
+
+.resume__inner {
+  @apply mx-auto max-w-2xl text-center;
+}
+
+.resume__title {
+  @apply text-4xl font-bold text-(--text-primary);
+  font-family: var(--font-display);
+}
+
+.resume__subtitle {
+  @apply mt-4 text-base text-(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.resume__actions {
+  @apply mt-6 flex justify-center;
+}
+
+.resume__viewer {
+  @apply mt-10 mx-auto;
+  max-width: 800px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-subtle);
+}
+
+.resume__iframe {
+  width: 100%;
+  height: 1000px;
+  border: none;
+  background: #fff;
+}
+
+@media (max-width: 767px) {
+  .resume__iframe {
+    height: 600px;
+  }
+}

@@ -100,10 +100,6 @@
   @apply flex flex-wrap gap-2;
 }
 
-.work-card__tech-tag {
-  @apply rounded-full px-2.5 py-1 text-xs bg-(--bg-tertiary) text-(--text-tertiary);
-  font-family: var(--font-mono);
-}
 
 .work-card__highlight {
   @apply text-xs text-(--accent);

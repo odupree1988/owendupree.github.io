@@ -4,7 +4,9 @@
    ═══════════════════════════════════════ */
 
 .home-cta {
-  @apply px-6 py-24;
+  @apply px-6;
+  padding-top: 80px;
+  padding-bottom: 80px;
   background: var(--bg-secondary);
 }
 
@@ -25,6 +27,13 @@
   @apply mt-8 flex justify-center gap-6;
 }
 
+
+@media (max-width: 767px) {
+  .home-cta {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
 
 @media (min-width: 768px) {
   .home-cta__title {

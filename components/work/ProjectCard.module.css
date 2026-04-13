@@ -278,6 +278,15 @@
   z-index: 1;
 }
 
+.card__back-headline {
+  @apply relative mt-1;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  z-index: 1;
+}
+
 .card__back-description {
   @apply relative mt-4 font-light;
   color: var(--text-secondary);
@@ -316,9 +325,16 @@
   }
 
   .card__inner {
-    @apply static;
+    @apply static overflow-hidden;
+    border-radius: 16px;
+    border: 1px solid var(--border-subtle);
+    background: var(--bg-secondary);
     transform-style: flat;
     transition: none;
+  }
+
+  .card__inner::after {
+    display: none;
   }
 
   .card:hover .card__inner {
@@ -330,25 +346,106 @@
     @apply static;
     backface-visibility: visible;
     border-radius: 0;
+    box-shadow: none;
+    border: none;
   }
 
+  /* Screenshot area */
   .card__front {
     @apply relative justify-end;
-    height: 200px;
+    height: 180px;
     border-radius: 16px 16px 0 0;
   }
 
+  .card__front::before {
+    display: none;
+  }
+
+  .card__front-content {
+    display: none;
+  }
+
+  .card__front-overlay {
+    display: none;
+  }
+
+  .card__front-image-wrap {
+    @apply absolute inset-0 rounded-none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: none;
+    border-radius: 16px 16px 0 0;
+  }
+
+  /* Content area */
   .card__back {
     @apply relative;
     transform: none;
     border-radius: 0 0 16px 16px;
     border-top: none;
+    pointer-events: auto;
+    padding: 20px;
   }
 
-  .card__inner {
-    @apply overflow-hidden;
-    border-radius: 16px;
-    border: 1px solid var(--border-subtle);
-    background: var(--bg-secondary);
+  .card__back::before {
+    display: none;
+  }
+
+  .card__back::after {
+    display: none;
+  }
+
+  .card__back-label {
+    display: none;
+  }
+
+  .card__back-divider {
+    display: none;
+  }
+
+  .card__back-top {
+    @apply flex flex-col;
+    gap: 4px;
+  }
+
+  .card__back-name {
+    margin-top: 0;
+    font-size: 18px;
+  }
+
+  .card__back-headline {
+    margin-top: 0;
+  }
+
+  .card__back-description {
+    margin-top: 8px;
+    font-size: 12px;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .card__back-bottom {
+    @apply flex flex-col;
+    gap: 12px;
+    margin-top: 12px;
+  }
+
+  .card__back-tech {
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  /* Cap at 4 pills */
+  .card__back-tech > :nth-child(n+5) {
+    display: none;
+  }
+
+  .card__back-cta {
+    margin-top: 0;
   }
 }

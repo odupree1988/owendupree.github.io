@@ -1,49 +1,28 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import styles from "./Hero.module.css";
 import linkStyles from "@/components/ui/LinkStyles.module.css";
-import anim from "@/components/ui/Animations.module.css";
 import chromeStyles from "@/components/ui/BrowserChrome.module.css";
 
-function cls(...names: string[]) {
-  return names.join(" ");
+const fadeUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-50px" } as const,
+};
+
+function reveal(delay: number) {
+  return {
+    ...fadeUp,
+    transition: { duration: 0.5, delay, ease: "easeOut" as const },
+  };
 }
 
 export function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const animated = section.querySelectorAll(
-      `.${anim["fade-in"]}, .${styles.hero__divider}`
-    );
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const el = entry.target;
-            if (el.classList.contains(styles.hero__divider)) {
-              el.classList.add(styles["hero__divider--visible"]);
-            } else {
-              el.classList.add(anim["fade-in--visible"]);
-            }
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    animated.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
 
   return (
-    <section ref={sectionRef} className={styles.hero}>
+    <section className={styles.hero}>
       {/* Scroll indicator */}
       <div className={styles.hero__scroll}>
         <span className={styles["hero__scroll-text"]}>SCROLL</span>
@@ -93,34 +72,34 @@ export function Hero() {
             <div className={`${chromeStyles.dots} ${chromeStyles["dots--lg"]}`}>
               <span /><span /><span />
             </div>
-            <span className={styles["hero__editor-title"]}>Hero.tsx — owen-portfolio</span>
+            <span className={styles["hero__editor-title"]}>owen.ts — owen-portfolio</span>
           </div>
 
           {/* Tab row */}
           <div className={styles["hero__editor-tabs"]}>
-            <div className={cls(styles["hero__editor-tab"], styles["hero__editor-tab--active"])}>
-              <span className={styles["hero__editor-tab-icon"]}>{"<>"}</span>
-              Hero.tsx
+            <div className={`${styles["hero__editor-tab"]} ${styles["hero__editor-tab--active"]}`}>
+              <span className={`${styles["hero__editor-tab-icon"]} ${styles["hero__editor-tab-icon--ts"]}`}>TS</span>
+              owen.ts
             </div>
             <div className={styles["hero__editor-tab"]}>
-              <span className={styles["hero__editor-tab-icon"]}>{"{}"}</span>
-              Hero.module.css
+              <span className={`${styles["hero__editor-tab-icon"]} ${styles["hero__editor-tab-icon--js"]}`}>JS</span>
+              why-is-this-working.js
             </div>
             <div className={styles["hero__editor-tab"]}>
-              <span className={styles["hero__editor-tab-icon"]}>{"{}"}</span>
-              globals.css
+              <span className={`${styles["hero__editor-tab-icon"]} ${styles["hero__editor-tab-icon--css"]}`}>CSS</span>
+              dont-touch.css
+            </div>
+            <div className={styles["hero__editor-tab"]}>
+              <span className={`${styles["hero__editor-tab-icon"]} ${styles["hero__editor-tab-icon--json"]}`}>{"{}"}</span>
+              motivation.json
             </div>
           </div>
 
           {/* Breadcrumb */}
           <div className={styles["hero__editor-breadcrumb"]}>
-            <span>components</span>
+            <span>config</span>
             <span className={styles["hero__editor-breadcrumb-sep"]}>›</span>
-            <span>home</span>
-            <span className={styles["hero__editor-breadcrumb-sep"]}>›</span>
-            <span>Hero.tsx</span>
-            <span className={styles["hero__editor-breadcrumb-sep"]}>›</span>
-            <span className={styles["hero__editor-breadcrumb-active"]}>Hero</span>
+            <span className={styles["hero__editor-breadcrumb-active"]}>owen.ts</span>
           </div>
 
           {/* Editor body */}
@@ -130,24 +109,21 @@ export function Hero() {
               <pre className={styles["hero__editor-pre"]}>
                 <code>
                   {[
-                    { num: 1,  text: <><span className={styles["syntax-keyword"]}>{"export function "}</span><span className={styles["syntax-fn"]}>Hero</span><span className={styles["syntax-punct"]}>{"() {"}</span></> },
-                    { num: 2,  text: <><span className={styles["syntax-keyword"]}>{"  const "}</span><span className={styles["syntax-var"]}>sectionRef</span><span className={styles["syntax-punct"]}>{" = "}</span><span className={styles["syntax-fn"]}>useRef</span><span className={styles["syntax-punct"]}>(</span><span className={styles["syntax-number"]}>null</span><span className={styles["syntax-punct"]}>)</span></> },
-                    { num: 3,  text: <></> },
-                    { num: 4,  text: <><span className={styles["syntax-keyword"]}>{"  return "}</span><span className={styles["syntax-punct"]}>(</span></> },
-                    { num: 5,  text: <><span className={styles["syntax-punct"]}>{"    <"}</span><span className={styles["syntax-tag"]}>section</span><span className={styles["syntax-attr"]}>{" ref"}</span><span className={styles["syntax-punct"]}>{"={"}</span><span className={styles["syntax-var"]}>sectionRef</span><span className={styles["syntax-punct"]}>{"}"}</span><span className={styles["syntax-punct"]}>{">"}</span></> },
-                    { num: 6,  text: <><span className={styles["syntax-punct"]}>{"      <"}</span><span className={styles["syntax-tag"]}>h1</span><span className={styles["syntax-punct"]}>{">"}</span></> },
-                    { num: 7,  text: <><span className={styles["syntax-string"]}>{"        OWEN DUPREE"}</span></>, active: true },
-                    { num: 8,  text: <><span className={styles["syntax-punct"]}>{"      </"}</span><span className={styles["syntax-tag"]}>h1</span><span className={styles["syntax-punct"]}>{">"}</span></> },
-                    { num: 9,  text: <><span className={styles["syntax-punct"]}>{"      <"}</span><span className={styles["syntax-tag"]}>p</span><span className={styles["syntax-punct"]}>{">"}</span><span className={styles["syntax-string"]}>Frontend engineer</span><span className={styles["syntax-punct"]}>{"</"}</span><span className={styles["syntax-tag"]}>p</span><span className={styles["syntax-punct"]}>{">"}</span></> },
-                    { num: 10, text: <></> },
-                    { num: 11, text: <><span className={styles["syntax-punct"]}>{"      <"}</span><span className={styles["syntax-tag"]}>Skills</span><span className={styles["syntax-attr"]}>{" items"}</span><span className={styles["syntax-punct"]}>{"={"}</span><span className={styles["syntax-var"]}>SKILLS</span><span className={styles["syntax-punct"]}>{"}"}</span><span className={styles["syntax-punct"]}>{" />"}</span></> },
-                    { num: 12, text: <><span className={styles["syntax-punct"]}>{"      <"}</span><span className={styles["syntax-tag"]}>Stats</span><span className={styles["syntax-attr"]}>{" years"}</span><span className={styles["syntax-punct"]}>{"={"}</span><span className={styles["syntax-var"]}>YEARS_CODING</span><span className={styles["syntax-punct"]}>{"}"}</span><span className={styles["syntax-punct"]}>{" />"}</span></> },
-                    { num: 13, text: <><span className={styles["syntax-punct"]}>{"    </"}</span><span className={styles["syntax-tag"]}>section</span><span className={styles["syntax-punct"]}>{">"}</span></> },
-                    { num: 14, text: <><span className={styles["syntax-punct"]}>{"  )"}</span></> },
-                    { num: 15, text: <><span className={styles["syntax-punct"]}>{"}"}</span></> },
-                    { num: 16, text: <></> },
+                    { num: 1,  text: <><span className={styles["syntax-keyword"]}>{"const "}</span><span className={styles["syntax-var"]}>owen</span><span className={styles["syntax-punct"]}>{" = {"}</span></> },
+                    { num: 2,  text: <><span className={styles["syntax-attr"]}>{"  role"}</span><span className={styles["syntax-punct"]}>{": "}</span><span className={styles["syntax-string"]}>{"'Frontend Engineer'"}</span><span className={styles["syntax-punct"]}>,</span></> },
+                    { num: 3,  text: <><span className={styles["syntax-attr"]}>{"  location"}</span><span className={styles["syntax-punct"]}>{": "}</span><span className={styles["syntax-string"]}>{"'Sanford, FL'"}</span><span className={styles["syntax-punct"]}>,</span></> },
+                    { num: 4,  text: <><span className={styles["syntax-attr"]}>{"  mindset"}</span><span className={styles["syntax-punct"]}>{": "}</span><span className={styles["syntax-string"]}>{"'growth'"}</span><span className={styles["syntax-punct"]}>,</span></> },
+                    { num: 5,  text: <><span className={styles["syntax-attr"]}>{"  fear"}</span><span className={styles["syntax-punct"]}>{": "}</span><span className={styles["syntax-string"]}>{"'Safari compatibility'"}</span><span className={styles["syntax-punct"]}>,</span></> },
+                    { num: 6,  text: <><span className={styles["syntax-attr"]}>{"  coffee"}</span><span className={styles["syntax-punct"]}>{": "}</span><span className={styles["syntax-string"]}>{"'refilling'"}</span><span className={styles["syntax-punct"]}>,</span></>, active: true },
+                    { num: 7,  text: <><span className={styles["syntax-attr"]}>{"  currently"}</span><span className={styles["syntax-punct"]}>{": "}</span><span className={styles["syntax-string"]}>{"'building this site'"}</span><span className={styles["syntax-punct"]}>,</span></> },
+                    { num: 8,  text: <><span className={styles["syntax-attr"]}>{"  available"}</span><span className={styles["syntax-punct"]}>{": "}</span><span className={styles["syntax-number"]}>true</span><span className={styles["syntax-punct"]}>,</span></> },
+                    { num: 9,  text: <><span className={styles["syntax-attr"]}>{"  learning"}</span><span className={styles["syntax-punct"]}>{": "}</span><span className={styles["syntax-string"]}>{"'always something'"}</span><span className={styles["syntax-punct"]}>,</span></> },
+                    { num: 10, text: <><span className={styles["syntax-attr"]}>{"  approach"}</span><span className={styles["syntax-punct"]}>{": "}</span><span className={styles["syntax-string"]}>{"'clean code, real impact'"}</span><span className={styles["syntax-punct"]}>,</span></> },
+                    { num: 11, text: <><span className={styles["syntax-attr"]}>{"  tabs"}</span><span className={styles["syntax-punct"]}>{": "}</span><span className={styles["syntax-string"]}>{"'always'"}</span><span className={styles["syntax-punct"]}>,</span></> },
+                    { num: 12, text: <><span className={styles["syntax-punct"]}>{"} "}</span><span className={styles["syntax-keyword"]}>{"satisfies "}</span><span className={styles["syntax-tag"]}>Human</span><span className={styles["syntax-punct"]}>;</span></> },
+                    { num: 13, text: <></> },
                   ].map(({ num, text, active: isActive }) => (
-                    <div key={num} className={cls(styles["hero__editor-line"], isActive ? styles["hero__editor-line--active"] : "")}>
+                    <div key={num} className={`${styles["hero__editor-line"]} ${isActive ? styles["hero__editor-line--active"] : ""}`}>
                       <span className={styles["hero__editor-linenum"]}>{num}</span>
                       {text}
                       {isActive && <span className={styles["hero__editor-cursor"]} />}
@@ -181,28 +157,19 @@ export function Hero() {
               <span>0 problems</span>
             </div>
             <div className={styles["hero__editor-statusbar-right"]}>
-              <span>Ln 7, Col 20</span>
+              <span>Ln 6, Col 28</span>
               <span>UTF-8</span>
-              <span>TypeScript React</span>
+              <span>TypeScript</span>
               <span>Prettier</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Decorative rects */}
-      <div className={styles.hero__deco}>
-        <div className={styles["hero__deco-rect--filled"]} />
-        <div className={styles["hero__deco-rect--outlined"]} />
-      </div>
-
       {/* Content */}
       <div className={styles.hero__content}>
         {/* Label + Location */}
-        <div
-          className={cls(styles.hero__label, anim["fade-in"])}
-          style={{ transitionDelay: "0.2s" }}
-        >
+        <motion.div className={styles.hero__label} {...reveal(0.2)}>
           <div className={styles["hero__label-line"]} />
           <span className={styles["hero__label-text"]}>FRONTEND ENGINEER</span>
           <span className={styles["hero__label-sep"]}>—</span>
@@ -213,36 +180,35 @@ export function Hero() {
             </svg>
             Sanford, FL
           </span>
-        </div>
+        </motion.div>
 
         {/* Name */}
         <h1 className={styles.hero__name}>
-          <span
-            className={cls(styles["hero__name-first"], anim["fade-in"])}
-            style={{ transitionDelay: "0.35s" }}
-          >
+          <motion.span className={styles["hero__name-first"]} {...reveal(0.35)}>
             OWEN
-          </span>
-          <span
-            className={cls(styles["hero__name-last"], anim["fade-in"])}
-            style={{ transitionDelay: "0.5s" }}
-          >
+          </motion.span>
+          <motion.span className={styles["hero__name-last"]} {...reveal(0.5)}>
             DUPREE
-          </span>
+          </motion.span>
         </h1>
 
         {/* Divider */}
-        <div className={styles.hero__divider} style={{ transitionDelay: "0.65s" }} />
+        <motion.div
+          className={styles.hero__divider}
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.8, delay: 0.65, ease: "easeOut" }}
+        />
 
         {/* Description */}
-        <div
-          className={cls(anim["fade-in"])}
-          style={{ transitionDelay: "0.75s" }}
-        >
+        <motion.div {...reveal(0.75)}>
           <p className={styles.hero__description}>
-            I work with brands to build websites and digital experiences that
-            feel modern, approachable, and built with care. From the overall
-            look and feel down to the details that make things work.
+            I build thoughtful websites and digital experiences for brands that
+            want something polished, approachable, and built with care.
+            I&apos;m passionate about creating work that feels clean, works the
+            way it should, and comes together thoughtfully from the technical
+            foundation to the final user experience.
           </p>
 
           <div className={styles.hero__actions}>
@@ -266,7 +232,7 @@ export function Hero() {
               </Link>
             </div>
           </div>
-        </div>
+        </motion.div>
 
       </div>
 

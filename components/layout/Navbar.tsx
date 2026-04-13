@@ -6,10 +6,10 @@ import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import styles from "./Navbar.module.css";
 
-const NAV_LINKS = [
+const NAV_LINKS: { href: string; label: string; download?: boolean }[] = [
   { href: "/work", label: "Work" },
   { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/resume", label: "Resume" },
 ];
 
 const MOBILE_NAV_LINKS = [
@@ -41,40 +41,62 @@ export function Navbar() {
     <>
       {/* Mobile overlay — outside nav to avoid backdrop-filter containing block */}
       <div className={cls(styles.navbar__overlay, !menuOpen && styles["navbar__overlay--closed"])}>
-        {MOBILE_NAV_LINKS.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={cls(
-              styles["navbar__overlay-link"],
-              pathname === link.href && styles["navbar__overlay-link--active"]
-            )}
-          >
-            {link.label}
-          </Link>
-        ))}
+        {MOBILE_NAV_LINKS.map((link) =>
+          link.download ? (
+            <a
+              key={link.href}
+              href={link.href}
+              download
+              className={styles["navbar__overlay-link"]}
+            >
+              {link.label}
+            </a>
+          ) : (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={cls(
+                styles["navbar__overlay-link"],
+                pathname === link.href && styles["navbar__overlay-link--active"]
+              )}
+            >
+              {link.label}
+            </Link>
+          )
+        )}
       </div>
 
       <nav className={cls(styles.navbar, scrolled && styles["navbar--scrolled"])}>
         <Link href="/" className={styles.navbar__brand}>
           <span className={styles.navbar__dot} />
-          owen dupree
+          owen.dupree
         </Link>
 
         {/* Desktop */}
         <div className={styles.navbar__links}>
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cls(
-                styles.navbar__link,
-                pathname === link.href && styles["navbar__link--active"]
-              )}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {NAV_LINKS.map((link) =>
+            link.download ? (
+              <a
+                key={link.href}
+                href={link.href}
+                download
+                className={styles.navbar__link}
+              >
+                {link.label}
+              </a>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cls(
+                  styles.navbar__link,
+                  pathname === link.href && styles["navbar__link--active"]
+                )}
+              >
+                {link.label}
+              </Link>
+            )
+          )}
           <Link href="/contact" className={styles.navbar__pill}>
             Let&apos;s talk
           </Link>
