@@ -6,7 +6,7 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={styles.footer__inner}>
         <span className={styles.footer__copy}>
-          &copy; 2024 {siteConfig.name}
+          &copy; {new Date().getFullYear()} {siteConfig.name}
         </span>
         <div className={styles.footer__socials}>
           <a href={`mailto:${siteConfig.email}`} aria-label="Email" className={styles.footer__social}>

@@ -20,7 +20,7 @@
   @apply flex items-center gap-2.5 no-underline transition-colors;
   color: var(--text-secondary);
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.5px;
 }
 
@@ -45,7 +45,8 @@
 }
 
 .navbar__link {
-  @apply no-underline transition-colors text-xs;
+  @apply no-underline transition-colors;
+  font-size: 14px;
   color: var(--text-tertiary);
   font-family: var(--font-mono);
   letter-spacing: 0.5px;

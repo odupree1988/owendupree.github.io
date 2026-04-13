@@ -24,6 +24,10 @@
   @apply text-base leading-relaxed text-(--text-secondary);
 }
 
+.about-bio__cta {
+  @apply mt-10;
+}
+
 @media (min-width: 768px) {
   .about-bio__title {
     @apply text-5xl;

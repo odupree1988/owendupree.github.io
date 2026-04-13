@@ -53,9 +53,11 @@
   }
 }
 
-/* Pause on hover */
-.skills__marquee:hover .skills__marquee-track {
-  animation-play-state: paused;
+/* Pause on hover (pointer devices only) */
+@media (hover: hover) {
+  .skills__marquee:hover .skills__marquee-track {
+    animation-play-state: paused;
+  }
 }
 
 /* ── Skill item ── */

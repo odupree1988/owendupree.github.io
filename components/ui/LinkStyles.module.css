@@ -10,7 +10,7 @@
 }
 
 .link-primary__btn {
-  @apply flex items-center justify-center shrink-0 rounded-full w-9 h-9 bg-transparent;
+  @apply flex items-center justify-center shrink-0 rounded-full w-8 h-8 bg-transparent;
   border: 1px solid var(--accent);
   transition: background 0.3s;
 }
@@ -33,7 +33,7 @@
   @apply relative whitespace-nowrap;
   color: var(--accent);
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 14px;
   letter-spacing: 0.3px;
 }
 
