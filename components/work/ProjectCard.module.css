@@ -285,10 +285,62 @@
 
 .card__back-cta {
   @apply relative mt-5 pointer-events-auto z-2;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .card__back-cta {
+    display: inline-flex;
+  }
 }
 
 .card__back-cta * {
   @apply pointer-events-none;
+}
+
+/* ── Focus styles (keyboard nav) ── */
+
+.card:focus-visible {
+  @apply outline-2 outline-offset-4 rounded-2xl;
+}
+
+.card:focus-visible .card__inner {
+  transform: rotateY(180deg);
+}
+
+.card:focus-visible .card__front {
+  @apply pointer-events-none;
+}
+
+.card:focus-visible .card__back {
+  @apply pointer-events-auto;
+}
+
+/* ── Reduced motion ── */
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: none;
+  }
+
+  .card__inner {
+    transition: none;
+  }
+
+  .card:hover .card__inner,
+  .card:focus-visible .card__inner {
+    transform: none;
+  }
+
+  .card__back {
+    @apply opacity-0;
+    transform: rotateY(0deg);
+  }
+
+  .card:hover .card__back,
+  .card:focus-visible .card__back {
+    @apply opacity-100;
+  }
 }
 
 /* ── Mobile: stacked layout, no flip ── */
@@ -401,7 +453,4 @@
   }
 
 
-  .card__back-cta {
-    @apply hidden;
-  }
 }

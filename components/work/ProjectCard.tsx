@@ -3,7 +3,6 @@
 import Image from "next/image";
 import styles from "./ProjectCard.module.css";
 import linkStyles from "@/components/ui/LinkStyles.module.css";
-import anim from "@/components/ui/Animations.module.css";
 import chromeStyles from "@/components/ui/BrowserChrome.module.css";
 import pillStyles from "@/components/ui/Pills.module.css";
 
@@ -19,30 +18,22 @@ export interface FlipProject {
 
 interface ProjectCardProps {
   project: FlipProject;
-  delay?: number;
 }
 
-function cls(...names: (string | false | undefined)[]) {
-  return names.filter(Boolean).join(" ");
-}
-
-export function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
+export function ProjectCard({ project }: ProjectCardProps) {
   return (
     <a
       href={project.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={cls(styles.card, anim["fade-in"])}
-      style={{ transitionDelay: `${delay}s` }}
+      className={styles.card}
     >
       <div className={styles.card__inner}>
-        {/* Front */}
-        <div
-          className={styles.card__front}
-        >
+        {/* Front — decorative chrome is hidden, content is exposed */}
+        <div className={styles.card__front}>
           {project.image ? (
             <>
-              <div className={styles["card__front-image-wrap"]}>
+              <div className={styles["card__front-image-wrap"]} aria-hidden="true">
                 <div className={styles["card__front-browser-bar"]}>
                   <span className={`${chromeStyles.dots} ${chromeStyles["dots--sm"]}`}>
                     <span /><span /><span />
@@ -52,7 +43,7 @@ export function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
                 <div className={styles["card__front-image-inner"]}>
                   <Image
                     src={project.image}
-                    alt={project.name}
+                    alt=""
                     fill
                     className={styles["card__front-image"]}
                     sizes="(min-width: 768px) 33vw, 100vw"
@@ -75,24 +66,24 @@ export function ProjectCard({ project, delay = 0 }: ProjectCardProps) {
           )}
         </div>
 
-        {/* Back */}
+        {/* Back — hide duplicate name/headline, expose unique content */}
         <div className={styles.card__back}>
           <div className={styles["card__back-top"]}>
-            <span className={styles["card__back-label"]}>About this project</span>
-            <div className={styles["card__back-divider"]} />
-            <h3 className={styles["card__back-name"]}>{project.name}</h3>
+            <span className={styles["card__back-label"]} aria-hidden="true">About this project</span>
+            <div className={styles["card__back-divider"]} aria-hidden="true" />
+            <h3 className={styles["card__back-name"]} aria-hidden="true">{project.name}</h3>
             {project.headline && (
-              <p className={styles["card__back-headline"]}>{project.headline}</p>
+              <p className={styles["card__back-headline"]} aria-hidden="true">{project.headline}</p>
             )}
             <p className={styles["card__back-description"]}>{project.description}</p>
           </div>
           <div className={styles["card__back-bottom"]}>
-            <div className={styles["card__back-tech"]}>
+            <div className={styles["card__back-tech"]} role="list" aria-label="Technologies used">
               {project.tech.map((t) => (
-                <span key={t} className={pillStyles.pill}>{t}</span>
+                <span key={t} role="listitem" className={pillStyles.pill}>{t}</span>
               ))}
             </div>
-            <span className={`${linkStyles["link-primary"]} ${styles["card__back-cta"]} hidden sm:inline-flex`}>
+            <span className={`${linkStyles["link-primary"]} ${styles["card__back-cta"]}`} aria-hidden="true">
               <span className={linkStyles["link-primary__btn"]}>
                 <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M7 17L17 7" />

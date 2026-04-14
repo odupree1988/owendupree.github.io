@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { siteConfig } from "@/data/siteConfig";
 import styles from "./AboutBio.module.css";
@@ -17,17 +18,17 @@ export function AboutBio() {
             </ScrollReveal>
           ))}
         </div>
-        <ScrollReveal delay={0.1 + siteConfig.aboutBio.length * 0.08}>
+        <ScrollReveal delay={0.1 + siteConfig.aboutBio.length * 0.08} margin="100px">
           <div className={styles["about-bio__cta"]}>
-            <a href="/Owen_Dupree_Resume_.pdf" target="_blank" rel="noopener noreferrer" className={linkStyles["link-primary"]}>
+            <Link href="/resume" className={linkStyles["link-primary"]}>
               <span className={linkStyles["link-primary__btn"]}>
-                <svg viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M7 17L17 7" />
                   <path d="M7 7h10v10" />
                 </svg>
               </span>
               <span className={linkStyles["link-primary__label"]}>View my resume</span>
-            </a>
+            </Link>
           </div>
         </ScrollReveal>
       </div>

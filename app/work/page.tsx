@@ -8,7 +8,7 @@ export default function WorkPage() {
       <div className="mx-auto max-w-5xl">
         <SectionHeading
           title="Work"
-          subtitle="Things I've helped bring to life"
+          subtitle="Brands I've helped bring to life"
         />
 
         <div className="flex flex-col gap-8">

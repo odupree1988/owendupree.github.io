@@ -66,8 +66,9 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <a href="#main" className="skip-to-content">Skip to content</a>
         <Navbar />
-        <main>{children}</main>
+        <main id="main">{children}</main>
         <Footer />
         <ThemeToggleMobile />
       </body>

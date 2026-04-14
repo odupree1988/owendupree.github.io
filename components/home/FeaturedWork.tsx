@@ -1,10 +1,7 @@
-"use client";
-
-import { useEffect, useRef } from "react";
 import Link from "next/link";
 import { ProjectCard, type FlipProject } from "@/components/work/ProjectCard";
+import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import styles from "./FeaturedWork.module.css";
-import anim from "@/components/ui/Animations.module.css";
 import linkStyles from "@/components/ui/LinkStyles.module.css";
 
 const PROJECTS: FlipProject[] = [
@@ -40,51 +37,32 @@ const PROJECTS: FlipProject[] = [
   },
 ];
 
-const STAGGER = [0.1, 0.25, 0.4];
-
 export function FeaturedWork() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const section = sectionRef.current;
-    if (!section) return;
-
-    const cards = section.querySelectorAll(`.${anim["fade-in"]}`);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add(anim["fade-in--visible"]);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    cards.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section ref={sectionRef} className={styles["featured-work"]}>
-      <h2 className={styles["featured-work__header"]}>Things I've Built</h2>
-      <div className={styles["featured-work__grid"]}>
-        {PROJECTS.map((project, i) => (
-          <ProjectCard key={project.name} project={project} delay={STAGGER[i]} />
-        ))}
-      </div>
-      <div className={styles["featured-work__cta"]}>
-        <Link href="/work" className={linkStyles["link-primary"]}>
-          <span className={linkStyles["link-primary__btn"]}>
-            <svg viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M7 17L17 7" />
-              <path d="M7 7h10v10" />
-            </svg>
-          </span>
-          <span className={linkStyles["link-primary__label"]}>View all of my work</span>
-        </Link>
-      </div>
+    <section className={styles["featured-work"]}>
+      <ScrollReveal>
+        <h2 className={styles["featured-work__header"]}>Things I&apos;ve Built</h2>
+      </ScrollReveal>
+      <ScrollReveal>
+        <div className={styles["featured-work__grid"]}>
+          {PROJECTS.map((project) => (
+            <ProjectCard key={project.name} project={project} />
+          ))}
+        </div>
+      </ScrollReveal>
+      <ScrollReveal>
+        <div className={styles["featured-work__cta"]}>
+          <Link href="/work" className={linkStyles["link-primary"]}>
+            <span className={linkStyles["link-primary__btn"]}>
+              <svg aria-hidden="true" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M7 17L17 7" />
+                <path d="M7 7h10v10" />
+              </svg>
+            </span>
+            <span className={linkStyles["link-primary__label"]}>View all of my work</span>
+          </Link>
+        </div>
+      </ScrollReveal>
     </section>
   );
 }

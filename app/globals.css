@@ -68,6 +68,11 @@
     @apply flex-1;
   }
 
+  :focus-visible {
+    @apply outline-2 outline-offset-2;
+    outline-color: var(--accent);
+  }
+
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
   }
@@ -75,6 +80,20 @@
   ::selection {
     background-color: var(--accent);
     color: var(--bg-primary);
+  }
+
+  .skip-to-content {
+    @apply fixed top-0 left-1/2 z-100 rounded-b-lg px-4 py-2 text-sm font-medium no-underline transition-transform duration-200 ease-out;
+    transform: translateX(-50%) translateY(-100%);
+    background: var(--accent);
+    color: var(--bg-primary);
+    font-family: var(--font-mono);
+  }
+
+  .skip-to-content:focus {
+    @apply outline-2 outline-offset-2;
+    transform: translateX(-50%) translateY(0);
+    outline-color: var(--accent);
   }
 
   /* Scrollbar */

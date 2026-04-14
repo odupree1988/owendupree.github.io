@@ -60,6 +60,13 @@
   }
 }
 
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .skills__marquee-track {
+    animation: none;
+  }
+}
+
 /* ── Skill item ── */
 
 .skills__item {
