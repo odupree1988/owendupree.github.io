@@ -60,7 +60,7 @@
 
 
   body {
-    @apply flex flex-col min-h-dvh antialiased;
+    @apply flex flex-col min-h-svh antialiased;
     font-family: var(--font-body);
   }
 

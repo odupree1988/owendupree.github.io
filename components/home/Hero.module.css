@@ -654,7 +654,7 @@
 
 @media (max-width: 768px) {
   .hero {
-    @apply overflow-visible px-6 h-dvh min-h-0;
+    @apply overflow-visible px-6 h-svh min-h-0;
     padding-top: 100px;
     padding-bottom: 40px;
   }

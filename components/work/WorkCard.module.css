@@ -96,6 +96,7 @@
 
 
 .work-card__highlight {
+  @apply mb-1;
   color: var(--accent);
   font-family: var(--font-mono);
   font-size: 12px;

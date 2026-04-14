@@ -199,7 +199,7 @@
 }
 
 .card__front-headline {
-  @apply mt-2;
+  @apply mt-2 mb-1;
   color: var(--accent);
   font-family: var(--font-mono);
   font-size: 12px;
