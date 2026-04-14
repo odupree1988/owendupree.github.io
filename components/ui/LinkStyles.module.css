@@ -58,7 +58,6 @@
   font-family: var(--font-mono);
   font-size: 13px;
   letter-spacing: 0.5px;
-  transition: color 0.3s;
 }
 
 .link-secondary__label {

@@ -5,7 +5,6 @@
 
 .navbar {
   @apply fixed top-0 left-0 right-0 flex items-center justify-between z-60 py-7 px-12 bg-transparent border-b border-transparent;
-  transition: background 0.3s, border-color 0.3s;
 }
 
 .navbar--scrolled {
@@ -17,7 +16,7 @@
 /* ── Brand ── */
 
 .navbar__brand {
-  @apply flex items-center gap-2.5 no-underline transition-colors;
+  @apply flex items-center gap-2.5 no-underline;
   color: var(--text-secondary);
   font-family: var(--font-mono);
   font-size: 14px;
@@ -45,7 +44,7 @@
 }
 
 .navbar__link {
-  @apply no-underline transition-colors;
+  @apply no-underline;
   font-size: 14px;
   color: var(--text-tertiary);
   font-family: var(--font-mono);
@@ -66,7 +65,6 @@
   border: 1px solid var(--border-hover);
   font-family: var(--font-mono);
   letter-spacing: 0.5px;
-  transition: border-color 0.3s, color 0.3s;
 }
 
 .navbar__pill:hover {

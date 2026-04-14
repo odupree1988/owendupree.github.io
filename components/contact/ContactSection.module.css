@@ -26,7 +26,8 @@
 }
 
 .contact__icon-link {
-  @apply flex items-center justify-center w-14 h-14 rounded-xl border border-(--border-subtle) bg-(--bg-secondary) text-(--text-secondary) transition-all duration-200;
+  @apply flex items-center justify-center w-14 h-14 rounded-xl border border-(--border-subtle) bg-(--bg-secondary) text-(--text-secondary);
+  transition: transform 0.2s, border-color 0.2s;
 }
 
 .contact__icon-link:hover {

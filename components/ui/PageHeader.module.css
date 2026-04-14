@@ -1,27 +1,36 @@
 @reference "../../app/globals.css";
 /* ═══════════════════════════════════════
-   SectionHeading Block
+   PageHeader Block — shared page title
    ═══════════════════════════════════════ */
 
-.section-heading {
-  @apply mb-8 text-center;
+.page-header {
+  @apply px-6 pt-32 pb-10;
 }
 
-.section-heading__title {
+.page-header__inner {
+  @apply mx-auto max-w-5xl;
+}
+
+.page-header__title {
   @apply text-4xl font-bold text-(--text-primary);
   font-family: var(--font-heading);
 }
 
-.section-heading__subtitle {
+.page-header--center {
+  @apply text-center;
+}
+
+.page-header__subtitle {
   @apply mt-3 text-base text-(--text-secondary);
+  font-family: var(--font-mono);
 }
 
 @media (min-width: 768px) {
-  .section-heading {
-    @apply mb-8;
+  .page-header {
+    @apply pt-40 pb-12;
   }
 
-  .section-heading__title {
+  .page-header__title {
     @apply text-5xl;
   }
 }

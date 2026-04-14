@@ -4,20 +4,15 @@
    ═══════════════════════════════════════ */
 
 .about-bio {
-  @apply px-6 py-20;
+  @apply px-6 pb-20;
 }
 
 .about-bio__inner {
   @apply mx-auto max-w-3xl;
 }
 
-.about-bio__title {
-  @apply text-4xl font-bold text-(--text-primary);
-  font-family: var(--font-heading);
-}
-
 .about-bio__paragraphs {
-  @apply mt-8 space-y-5;
+  @apply space-y-5;
 }
 
 .about-bio__paragraph {
@@ -29,10 +24,6 @@
 }
 
 @media (min-width: 768px) {
-  .about-bio__title {
-    @apply text-5xl;
-  }
-
   .about-bio__paragraph {
     @apply text-lg;
   }
